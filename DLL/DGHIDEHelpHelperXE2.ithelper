@@ -1,0 +1,18 @@
+[VersionInfo]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0
+Comments=
+
+[Zipping]
+Enabled=1
+ZipFile=D:\HoylD\Web Page\Zips\DGHIDEHelpHelper.zip
+BasePath=D:\HoylD\Borland Studio Projects\
+ExclusionFiles=
+

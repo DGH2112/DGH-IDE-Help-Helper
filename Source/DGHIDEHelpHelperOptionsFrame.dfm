@@ -1,0 +1,311 @@
+object fmIDEHelpHelperOptions: TfmIDEHelpHelperOptions
+  Left = 0
+  Top = 0
+  Width = 608
+  Height = 303
+  TabOrder = 0
+  object gpGridPanel: TGridPanel
+    Left = 0
+    Top = 0
+    Width = 608
+    Height = 303
+    Align = alClient
+    BevelOuter = bvNone
+    ColumnCollection = <
+      item
+        Value = 100.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        Control = pnlSearchURLs
+        Row = 0
+      end
+      item
+        Column = 0
+        Control = pnlPermanentURLs
+        Row = 1
+      end>
+    RowCollection = <
+      item
+        Value = 50.000000000000000000
+      end
+      item
+        Value = 50.000000000000000000
+      end>
+    TabOrder = 0
+    object pnlSearchURLs: TPanel
+      Left = 0
+      Top = 0
+      Width = 608
+      Height = 151
+      Align = alClient
+      BevelOuter = bvNone
+      TabOrder = 0
+      object lblSearchURLs: TLabel
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 602
+        Height = 13
+        Align = alTop
+        Anchors = []
+        Caption = 'Search URLs'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 70
+      end
+      object pnlSearchButtons: TPanel
+        Left = 0
+        Top = 119
+        Width = 608
+        Height = 32
+        Align = alBottom
+        BevelOuter = bvNone
+        ParentBackground = False
+        TabOrder = 0
+        DesignSize = (
+          608
+          32)
+        object btnAddSearch: TBitBtn
+          Left = 368
+          Top = 4
+          Width = 75
+          Height = 25
+          Anchors = [akRight, akBottom]
+          Caption = '&Add'
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            04000000000000010000130B0000130B00001000000000000000000000000000
+            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+            33333333FF33333333FF333993333333300033377F3333333777333993333333
+            300033F77FFF3333377739999993333333333777777F3333333F399999933333
+            33003777777333333377333993333333330033377F3333333377333993333333
+            3333333773333333333F333333333333330033333333F33333773333333C3333
+            330033333337FF3333773333333CC333333333FFFFF77FFF3FF33CCCCCCCCCC3
+            993337777777777F77F33CCCCCCCCCC3993337777777777377333333333CC333
+            333333333337733333FF3333333C333330003333333733333777333333333333
+            3000333333333333377733333333333333333333333333333333}
+          NumGlyphs = 2
+          TabOrder = 0
+          OnClick = btnAddSearchClick
+        end
+        object btnEditSearch: TBitBtn
+          Left = 449
+          Top = 4
+          Width = 75
+          Height = 25
+          Anchors = [akRight, akBottom]
+          Caption = '&Edit'
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            04000000000000010000120B0000120B00001000000000000000000000000000
+            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333000000
+            000033333377777777773333330FFFFFFFF03FF3FF7FF33F3FF700300000FF0F
+            00F077F777773F737737E00BFBFB0FFFFFF07773333F7F3333F7E0BFBF000FFF
+            F0F077F3337773F3F737E0FBFBFBF0F00FF077F3333FF7F77F37E0BFBF00000B
+            0FF077F3337777737337E0FBFBFBFBF0FFF077F33FFFFFF73337E0BF0000000F
+            FFF077FF777777733FF7000BFB00B0FF00F07773FF77373377373330000B0FFF
+            FFF03337777373333FF7333330B0FFFF00003333373733FF777733330B0FF00F
+            0FF03333737F37737F373330B00FFFFF0F033337F77F33337F733309030FFFFF
+            00333377737FFFFF773333303300000003333337337777777333}
+          NumGlyphs = 2
+          TabOrder = 1
+          OnClick = btnEditSearchClick
+        end
+        object btnDeleteSearch: TBitBtn
+          Left = 530
+          Top = 4
+          Width = 75
+          Height = 25
+          Anchors = [akRight, akBottom]
+          Caption = 'De&lete'
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            04000000000000010000130B0000130B00001000000000000000000000000000
+            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+            333333333333333333FF33333333333330003333333333333777333333333333
+            300033FFFFFF3333377739999993333333333777777F3333333F399999933333
+            3300377777733333337733333333333333003333333333333377333333333333
+            3333333333333333333F333333333333330033333F33333333773333C3333333
+            330033337F3333333377333CC3333333333333F77FFFFFFF3FF33CCCCCCCCCC3
+            993337777777777F77F33CCCCCCCCCC399333777777777737733333CC3333333
+            333333377F33333333FF3333C333333330003333733333333777333333333333
+            3000333333333333377733333333333333333333333333333333}
+          NumGlyphs = 2
+          TabOrder = 2
+          OnClick = btnDeleteSearchClick
+        end
+      end
+      object lbxSearchURLs: TCheckListBox
+        AlignWithMargins = True
+        Left = 3
+        Top = 22
+        Width = 602
+        Height = 94
+        OnClickCheck = lbxSearchURLsClickCheck
+        Align = alClient
+        DoubleBuffered = True
+        ItemHeight = 13
+        ParentDoubleBuffered = False
+        TabOrder = 1
+        OnClick = lbxSearchURLsClick
+        OnKeyDown = FormKeyDown
+        OnMouseDown = lbxSearchURLsMouseDown
+      end
+    end
+    object pnlPermanentURLs: TPanel
+      Left = 0
+      Top = 151
+      Width = 608
+      Height = 152
+      Align = alClient
+      BevelOuter = bvNone
+      TabOrder = 1
+      object lblPermanentURLs: TLabel
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 602
+        Height = 13
+        Align = alTop
+        Anchors = []
+        Caption = 'Permanent URLs'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 94
+      end
+      object lbxPermanentURLs: TListBox
+        AlignWithMargins = True
+        Left = 3
+        Top = 22
+        Width = 602
+        Height = 95
+        Align = alClient
+        ItemHeight = 13
+        TabOrder = 0
+        OnClick = lbxPermanentURLsClick
+      end
+      object pnlPermanentButtons: TPanel
+        Left = 0
+        Top = 120
+        Width = 608
+        Height = 32
+        Align = alBottom
+        BevelOuter = bvNone
+        ParentBackground = False
+        TabOrder = 1
+        DesignSize = (
+          608
+          32)
+        object btnAddPermanent: TBitBtn
+          Left = 368
+          Top = 3
+          Width = 75
+          Height = 25
+          Anchors = [akRight, akBottom]
+          Caption = 'A&dd'
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            04000000000000010000130B0000130B00001000000000000000000000000000
+            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+            33333333FF33333333FF333993333333300033377F3333333777333993333333
+            300033F77FFF3333377739999993333333333777777F3333333F399999933333
+            33003777777333333377333993333333330033377F3333333377333993333333
+            3333333773333333333F333333333333330033333333F33333773333333C3333
+            330033333337FF3333773333333CC333333333FFFFF77FFF3FF33CCCCCCCCCC3
+            993337777777777F77F33CCCCCCCCCC3993337777777777377333333333CC333
+            333333333337733333FF3333333C333330003333333733333777333333333333
+            3000333333333333377733333333333333333333333333333333}
+          NumGlyphs = 2
+          TabOrder = 0
+          OnClick = btnAddPermanentClick
+        end
+        object btnEditPeranent: TBitBtn
+          Left = 449
+          Top = 3
+          Width = 75
+          Height = 25
+          Anchors = [akRight, akBottom]
+          Caption = 'Ed&it'
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            04000000000000010000120B0000120B00001000000000000000000000000000
+            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333000000
+            000033333377777777773333330FFFFFFFF03FF3FF7FF33F3FF700300000FF0F
+            00F077F777773F737737E00BFBFB0FFFFFF07773333F7F3333F7E0BFBF000FFF
+            F0F077F3337773F3F737E0FBFBFBF0F00FF077F3333FF7F77F37E0BFBF00000B
+            0FF077F3337777737337E0FBFBFBFBF0FFF077F33FFFFFF73337E0BF0000000F
+            FFF077FF777777733FF7000BFB00B0FF00F07773FF77373377373330000B0FFF
+            FFF03337777373333FF7333330B0FFFF00003333373733FF777733330B0FF00F
+            0FF03333737F37737F373330B00FFFFF0F033337F77F33337F733309030FFFFF
+            00333377737FFFFF773333303300000003333337337777777333}
+          NumGlyphs = 2
+          TabOrder = 1
+          OnClick = btnEditPeranentClick
+        end
+        object btnDeletePermanent: TBitBtn
+          Left = 530
+          Top = 4
+          Width = 75
+          Height = 25
+          Anchors = [akRight, akBottom]
+          Caption = 'Dele&te'
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            04000000000000010000130B0000130B00001000000000000000000000000000
+            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+            333333333333333333FF33333333333330003333333333333777333333333333
+            300033FFFFFF3333377739999993333333333777777F3333333F399999933333
+            3300377777733333337733333333333333003333333333333377333333333333
+            3333333333333333333F333333333333330033333F33333333773333C3333333
+            330033337F3333333377333CC3333333333333F77FFFFFFF3FF33CCCCCCCCCC3
+            993337777777777F77F33CCCCCCCCCC399333777777777737733333CC3333333
+            333333377F33333333FF3333C333333330003333733333333777333333333333
+            3000333333333333377733333333333333333333333333333333}
+          NumGlyphs = 2
+          TabOrder = 2
+          OnClick = btnDeletePermanentClick
+        end
+        object btnDefault: TBitBtn
+          Left = 3
+          Top = 3
+          Width = 75
+          Height = 25
+          Anchors = [akLeft, akBottom]
+          Caption = 'De&fault'
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            04000000000000010000130B0000130B00001000000000000000000000000000
+            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+            33333333FF33333333FF333993333333300033377F3333333777333993333333
+            300033F77FFF3333377739999993333333333777777F3333333F399999933333
+            33003777777333333377333993333333330033377F3333333377333993333333
+            3333333773333333333F333333333333330033333333F33333773333333C3333
+            330033333337FF3333773333333CC333333333FFFFF77FFF3FF33CCCCCCCCCC3
+            993337777777777F77F33CCCCCCCCCC3993337777777777377333333333CC333
+            333333333337733333FF3333333C333330003333333733333777333333333333
+            3000333333333333377733333333333333333333333333333333}
+          NumGlyphs = 2
+          TabOrder = 3
+          OnClick = btnDefaultClick
+        end
+      end
+    end
+  end
+end
