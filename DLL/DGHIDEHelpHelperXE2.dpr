@@ -23,7 +23,7 @@ uses
   WizardInterface in '..\Source\WizardInterface.pas',
   KeyboardBindingInterface in '..\Source\KeyboardBindingInterface.pas',
   DockableBrowserForm in '..\Source\DockableBrowserForm.pas' {frmDockableBrowser},
-  WebBrowserFrame in '..\..\..\Library\WebBrowserFrame.pas' {fmWebBrowser: TFrame},
+  WebBrowserFrame in '..\Source\WebBrowserFrame.pas' {fmWebBrowser: TFrame},
   DGHIDEHelphelperConfigForm in '..\Source\DGHIDEHelphelperConfigForm.pas' {frmDGHIDEHelphelperConfig},
   ApplicationsOptions in '..\Source\ApplicationsOptions.pas',
   DGHIDEHelpHelperOptionsFrame in '..\Source\DGHIDEHelpHelperOptionsFrame.pas' {fmIDEHelpHelperOptions: TFrame},
