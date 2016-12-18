@@ -1,4 +1,13 @@
-//: @stopdocumentation
+(**
+
+  This defines a DLL Open Tools API project to displaya web browser search for any context
+  information the IDE cannot find.
+
+  @Author  David Hoyle
+  @Version 1.0
+  @Date    18 Dec 2016
+
+**)
 library DGHIDEHelpHelperXE101;
 
 { Important note about DLL memory management: ShareMem must be the
@@ -23,11 +32,11 @@ uses
   WizardInterface in '..\Source\WizardInterface.pas',
   KeyboardBindingInterface in '..\Source\KeyboardBindingInterface.pas',
   DockableBrowserForm in '..\Source\DockableBrowserForm.pas' {frmDockableBrowser},
-  WebBrowserFrame in '..\..\..\Library\WebBrowserFrame.pas' {fmWebBrowser: TFrame},
   DGHIDEHelphelperConfigForm in '..\Source\DGHIDEHelphelperConfigForm.pas' {frmDGHIDEHelphelperConfig},
   ApplicationsOptions in '..\Source\ApplicationsOptions.pas',
   DGHIDEHelpHelperOptionsFrame in '..\Source\DGHIDEHelpHelperOptionsFrame.pas' {fmIDEHelpHelperOptions: TFrame},
-  IDEOptionsInterface in '..\Source\IDEOptionsInterface.pas';
+  IDEOptionsInterface in '..\Source\IDEOptionsInterface.pas',
+  WebBrowserFrame in '..\Source\WebBrowserFrame.pas' {fmWebBrowser: TFrame};
 
 begin
 end.
