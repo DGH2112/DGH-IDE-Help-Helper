@@ -17,7 +17,7 @@ Uses
   Forms,
   DGHIDEHelpHelperOptionsFrame;
 
-{$INCLUDE ..\..\..\Library\CompilerDefinitions.inc}
+{$INCLUDE CompilerDefinitions.inc}
 
 {$IFDEF DXE00}
 Type

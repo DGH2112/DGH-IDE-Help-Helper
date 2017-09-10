@@ -6,7 +6,7 @@
 
   @Version 1.0
   @Author  David Hoyle
-  @Date    07 Apr 2016
+  @Date    10 Sep 2017
 
 **)
 Unit WebBrowserFrame;
@@ -32,7 +32,7 @@ Uses
   ExtCtrls,
   StdCtrls;
 
-{$INCLUDE ..\..\..\Library\CompilerDefinitions.inc}
+{$INCLUDE CompilerDefinitions.inc}
 Type
   (** This is a class to represent a frame for the web browser including an address bar
       and toolbar buttons. **)

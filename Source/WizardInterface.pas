@@ -17,7 +17,7 @@ Uses
   ExtCtrls,
   IDEOptionsInterface;
 
-{$INCLUDE ..\..\..\Library\CompilerDefinitions.inc}
+{$INCLUDE CompilerDefinitions.inc}
 
 Type
   (** This class defines the main wizard interfaces for the application. **)

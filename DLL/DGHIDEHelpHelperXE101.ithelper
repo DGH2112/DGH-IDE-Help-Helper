@@ -10,7 +10,7 @@ CompileWithBRCC32=0
 MajorVer=1
 MinorVer=0
 ReleaseVer=3
-BuildVer=200
+BuildVer=201
 ResourceName=ITHrVerInfo
 
 [Zipping]
@@ -22,7 +22,7 @@ ExclusionFiles=
 [VersionInfo]
 CompanyName=Season's Fall Music
 FileDescription=DGHIDEHelpHelperXE10
-FileVersion=1.0.3.200
+FileVersion=1.0.3.201
 InternalName=DGHIDEHelpHelperXE10
 LegalCopyright=Season's Fall Music
 LegalTrademarks=Season's Fall Music

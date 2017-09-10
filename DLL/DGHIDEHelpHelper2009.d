@@ -7,14 +7,14 @@
 		C:\Program Files (x86)\CodeGear\RAD Studio\6.0\\lib\xmlrtl.dcp \
 		C:\Program Files (x86)\CodeGear\RAD Studio\6.0\\lib\vclactnband.dcp \
 		C:\Program Files (x86)\CodeGear\RAD Studio\6.0\\lib\rtl.dcp \
-		D:\HoylD\RAD Studio\IDE Addins\DGH IDE Help Helper\Source\IDEOptionsInterface.dcu \
-		D:\HoylD\RAD Studio\IDE Addins\DGH IDE Help Helper\Source\DGHIDEHelpHelperOptionsFrame.dcu \
-		D:\HoylD\RAD Studio\IDE Addins\DGH IDE Help Helper\Source\ApplicationsOptions.dcu \
-		D:\HoylD\RAD Studio\IDE Addins\DGH IDE Help Helper\Source\DGHIDEHelphelperConfigForm.dcu \
-		D:\HoylD\RAD Studio\IDE Addins\DGH IDE Help Helper\Source\WebBrowserFrame.dcu \
-		D:\HoylD\RAD Studio\IDE Addins\DGH IDE Help Helper\Source\DockableBrowserForm.dcu \
-		D:\HoylD\RAD Studio\IDE Addins\DGH IDE Help Helper\Source\KeyboardBindingInterface.dcu \
-		D:\HoylD\RAD Studio\IDE Addins\DGH IDE Help Helper\Source\WizardInterface.dcu \
-		D:\HoylD\RAD Studio\IDE Addins\DGH IDE Help Helper\Source\UtilityFunctions.dcu \
-		D:\HoylD\RAD Studio\IDE Addins\DGH IDE Help Helper\Source\InitialiseOTAInterface.dcu \
+		..\Source\IDEOptionsInterface.dcu \
+		..\Source\DGHIDEHelpHelperOptionsFrame.dcu \
+		..\Source\ApplicationsOptions.dcu \
+		..\Source\DGHIDEHelphelperConfigForm.dcu \
+		..\Source\WebBrowserFrame.dcu \
+		..\Source\DockableBrowserForm.dcu \
+		..\Source\KeyboardBindingInterface.dcu \
+		..\Source\WizardInterface.dcu \
+		..\Source\UtilityFunctions.dcu \
+		..\Source\InitialiseOTAInterface.dcu \
 		C:\Program Files (x86)\CodeGear\RAD Studio\6.0\\lib\SysInit.dcu

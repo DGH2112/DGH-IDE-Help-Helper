@@ -5,7 +5,7 @@
 
   @Version 1.0
   @Author  David Hoyle
-  @Date    06 Nov 2016
+  @Date    19 Dec 2016
 
 **)
 Unit InitialiseOTAInterface;
@@ -15,7 +15,7 @@ Interface
 Uses
   ToolsAPI;
 
-{$INCLUDE '..\..\..\Library\CompilerDefinitions.inc'}
+{$INCLUDE 'CompilerDefinitions.inc'}
 
   Procedure Register;
 
@@ -103,20 +103,12 @@ Begin
   Application.Handle := Svcs.GetParentHandle;
   {$IFDEF D2005}
   // Aboutbox plugin
-  {$IFDEF D2007}
-  bmSplashScreen24x24 := LoadBitmap(hInstance, 'DGHIDEHelpHelperSplashScreenBitMap24x24');
-  {$ELSE}
   bmSplashScreen48x48 := LoadBitmap(hInstance, 'DGHIDEHelpHelperSplashScreenBitMap48x48');
-  {$ENDIF}
   With VersionInfo Do
     iAboutPluginIndex := (BorlandIDEServices As IOTAAboutBoxServices).AddPluginInfo(
       Format(strSplashScreenName, [iMajor, iMinor, Copy(strRevision, iBugFix + 1, 1), Application.Title]),
       'A wizard to intercept F1 calls and look up help on the web if not handled by the IDE..',
-      {$IFDEF D2007}
-      bmSplashScreen24x24,
-      {$ELSE}
       bmSplashScreen48x48,
-      {$ENDIF}
       False,
       Format(strSplashScreenBuild, [iMajor, iMinor, iBugfix, iBuild]),
       Format('SKU Build %d.%d.%d.%d', [iMajor, iMinor, iBugfix, iBuild]));
@@ -176,11 +168,19 @@ Initialization
   {$IFDEF D2005}
   BuildNumber(VersionInfo);
   // Add Splash Screen
+  {$IFDEF D2007}
+  bmSplashScreen24x24 := LoadBitmap(hInstance, 'DGHIDEHelpHelperSplashScreenBitMap24x24');
+  {$ELSE}
   bmSplashScreen48x48 := LoadBitmap(hInstance, 'DGHIDEHelpHelperSplashScreenBitMap48x48');
+  {$ENDIF}
   With VersionInfo Do
     (SplashScreenServices As IOTASplashScreenServices).AddPluginBitmap(
       Format(strSplashScreenName, [iMajor, iMinor, Copy(strRevision, iBugFix + 1, 1), Application.Title]),
+      {$IFDEF D2007}
+      bmSplashScreen24x24,
+      {$ELSE}
       bmSplashScreen48x48,
+      {$ENDIF}
       False,
       Format(strSplashScreenBuild, [iMajor, iMinor, iBugfix, iBuild]));
   {$ENDIF}

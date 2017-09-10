@@ -16,7 +16,7 @@ Uses
   ToolsAPI,
   Classes;
 
-{$INCLUDE ..\..\..\Library\CompilerDefinitions.inc}
+{$INCLUDE CompilerDefinitions.inc}
 
 Type
   (** This class imlpements the IOTAKeyboardbinding interface for handling the F1 key

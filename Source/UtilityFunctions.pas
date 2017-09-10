@@ -16,7 +16,7 @@ Uses
   Graphics,
   Windows;
 
-{$INCLUDE ..\..\..\Library\CompilerDefinitions.inc}
+{$INCLUDE CompilerDefinitions.inc}
 
 Type
   (** This class defined a custom message for the IDE. **)
