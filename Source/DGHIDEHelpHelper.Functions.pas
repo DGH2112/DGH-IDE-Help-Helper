@@ -2,12 +2,12 @@
 
   This module contains often used code for use through out this application.
 
-  @Version 1.0
+  @Version 1.001
   @Author  David Hoyle
-  @Date    25 Mar 2016
+  @Date    08 Jan 2022
 
 **)
-Unit UtilityFunctions;
+Unit DGHIDEHelpHelper.Functions;
 
 Interface
 

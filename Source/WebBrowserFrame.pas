@@ -4,9 +4,9 @@
   than one applciation without having to conditionally compile a form for inclusion in the
   IDE or an external application.
 
-  @Version 1.0
+  @Version 1.006
   @Author  David Hoyle
-  @Date    10 Sep 2017
+  @Date    08 Jan 2022
 
 **)
 Unit WebBrowserFrame;
@@ -30,7 +30,7 @@ Uses
   SHDocVw,
   Buttons,
   ExtCtrls,
-  StdCtrls;
+  StdCtrls, System.ImageList, System.Actions;
 
 {$INCLUDE CompilerDefinitions.inc}
 Type
@@ -92,7 +92,7 @@ Implementation
 {$R *.dfm}
 
 Uses
-  UtilityFunctions,
+  DGHIDEHelpHelper.Functions,
   DGHIDEHelphelperConfigForm,
   ApplicationsOptions,
   ShellAPI,

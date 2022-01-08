@@ -2,12 +2,12 @@
 
   This module contains the main wizard / menu wizard code for the IDE plugin.
 
-  @Version 1.0
+  @Version 1.010
   @Author  David Hoyle
-  @Date    07 Apr 2016
+  @Date    08 Jan 2022
 
 **)
-Unit WizardInterface;
+Unit DGHIDEHelpHelper.Wizard;
 
 Interface
 
@@ -46,7 +46,8 @@ Implementation
 { TWizardTemplate }
 
 Uses
-  DockableBrowserForm;
+  DockableBrowserForm,
+  DGHIDEHelpHelper.SplashScreen;
 
 {$IFDEF DXE00}
 (**
@@ -61,6 +62,7 @@ Uses
 Constructor TWizardTemplate.Create;
 
 Begin
+  TIHHSplashScreen.AddSplashScreenItem;
   FOpFrame := TIDEHelpHelperIDEOptionsInterface.Create;
   (BorlandIDEServices As INTAEnvironmentOptionsServices).RegisterAddInOptions(FOpFrame);
 End;

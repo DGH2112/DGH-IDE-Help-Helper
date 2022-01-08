@@ -4,7 +4,7 @@
   information the IDE cannot find.
 
   @Author  David Hoyle
-  @Version 1.014
+  @Version 1.015
   @Date    06 Jan 2022
 
 **)
@@ -28,15 +28,18 @@ Library DGHIDEHelpHelper;
 
 uses
   InitialiseOTAInterface in 'Source\InitialiseOTAInterface.pas',
-  UtilityFunctions in 'Source\UtilityFunctions.pas',
-  WizardInterface in 'Source\WizardInterface.pas',
+  DGHIDEHelpHelper.Functions in 'Source\DGHIDEHelpHelper.Functions.pas',
+  DGHIDEHelpHelper.Wizard in 'Source\DGHIDEHelpHelper.Wizard.pas',
   KeyboardBindingInterface in 'Source\KeyboardBindingInterface.pas',
   DockableBrowserForm in 'Source\DockableBrowserForm.pas' {frmDockableBrowser},
   DGHIDEHelphelperConfigForm in 'Source\DGHIDEHelphelperConfigForm.pas' {frmDGHIDEHelphelperConfig},
   ApplicationsOptions in 'Source\ApplicationsOptions.pas',
   DGHIDEHelpHelperOptionsFrame in 'Source\DGHIDEHelpHelperOptionsFrame.pas' {fmIDEHelpHelperOptions: TFrame},
   IDEOptionsInterface in 'Source\IDEOptionsInterface.pas',
-  WebBrowserFrame in 'Source\WebBrowserFrame.pas' {fmWebBrowser: TFrame};
+  WebBrowserFrame in 'Source\WebBrowserFrame.pas' {fmWebBrowser: TFrame},
+  DGHIDEHelpHelper.SplashScreen in 'Source\DGHIDEHelpHelper.SplashScreen.pas',
+  DGHIDEHelpHelper.ResourceStrings in 'Source\DGHIDEHelpHelper.ResourceStrings.pas',
+  DGHIDEHelpHelper.Constants in 'Source\DGHIDEHelpHelper.Constants.pas';
 
 {$INCLUDE Source\CompilerDefinitions.inc}
 {$INCLUDE Source\LibrarySuffixes.inc}

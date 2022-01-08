@@ -3,9 +3,9 @@
   This module contains a class to provide a key binding wizard to capture the F1 keypress
   in the IDE and if unhandled do an internet search.
 
-  @Version 1.0
+  @Version 1.002
   @Author  David Hoyle
-  @Date    07 Apr 2016
+  @Date    08 Jan 2022
 
 **)
 Unit KeyboardBindingInterface;
@@ -40,7 +40,7 @@ Uses
   SysUtils,
   Dialogs,
   Menus,
-  UtilityFunctions,
+  DGHIDEHelpHelper.Functions,
   ShellAPI,
   Windows,
   DockableBrowserForm,

@@ -3,9 +3,9 @@
   This module contains methods for initialising all the various wizard interfaces required
   by the application.
 
-  @Version 1.0
+  @Version 1.132
   @Author  David Hoyle
-  @Date    19 Dec 2016
+  @Date    08 Jan 2022
 
 **)
 Unit InitialiseOTAInterface;
@@ -32,10 +32,12 @@ Uses
   SysUtils,
   Forms,
   Windows,
-  WizardInterface,
+  DGHIDEHelpHelper.Wizard,
   KeyboardBindingInterface,
-  UtilityFunctions,
-  DockableBrowserForm;
+  DockableBrowserForm,
+  DGHIDEHelpHelper.Functions,
+  DGHIDEHelpHelper.ResourceStrings,
+  DGHIDEHelpHelper.Constants;
 
 Type
   (** An enumerate to define the type of wizard to be created. **)
@@ -51,10 +53,6 @@ Var
   (** A variable to hold the version information for the application. **)
   VersionInfo            : TVersionInfo;
   (** A variable to hold the bitmap for the application. **)
-  {$IFDEF D2007}
-  (** This is a 24x24 butmap variabes for the splash scren in RAD Studio 2007 and above. **)
-  bmSplashScreen24x24    : HBITMAP;
-  {$ENDIF}
   (** This is a 48x48 butmap variabes for the splash scren in RAD Studio 2005/6 and the
       about box in 2005 and above. **)
   bmSplashScreen48x48    : HBITMAP;
@@ -68,18 +66,6 @@ Var
   (** A variabel to hold the wizard index for the key binding wizard. **)
   iKeyBindingIndex       : Integer = iWizardFailState;
 
-
-{$IFDEF D2005}
-Const
-  (** This constant represents a zero based list of bug fix letters. **)
-  strRevision : String = ' abcdefghijklmnopqrstuvwxyz';
-
-ResourceString
-  (** This resource string is the for splash screen name. **)
-  strSplashScreenName = 'IDE Help Helper %d.%d%s for %s';
-  (** This resource string is for the splash screen build information. **)
-  strSplashScreenBuild = 'Freeware by David Hoyle (Build %d.%d.%d.%d)';
-{$ENDIF}
 
 (**
 
@@ -165,25 +151,6 @@ End;
     splash screen for the application. **)
 Initialization
   TfrmDockableBrowser.CreateDockableBrowser;
-  {$IFDEF D2005}
-  BuildNumber(VersionInfo);
-  // Add Splash Screen
-  {$IFDEF D2007}
-  bmSplashScreen24x24 := LoadBitmap(hInstance, 'DGHIDEHelpHelperSplashScreenBitMap24x24');
-  {$ELSE}
-  bmSplashScreen48x48 := LoadBitmap(hInstance, 'DGHIDEHelpHelperSplashScreenBitMap48x48');
-  {$ENDIF}
-  With VersionInfo Do
-    (SplashScreenServices As IOTASplashScreenServices).AddPluginBitmap(
-      Format(strSplashScreenName, [iMajor, iMinor, Copy(strRevision, iBugFix + 1, 1), Application.Title]),
-      {$IFDEF D2007}
-      bmSplashScreen24x24,
-      {$ELSE}
-      bmSplashScreen48x48,
-      {$ENDIF}
-      False,
-      Format(strSplashScreenBuild, [iMajor, iMinor, iBugfix, iBuild]));
-  {$ENDIF}
 (** The finalisation section removes the about boc, splash screen entries and wizard
     interfaces and frees the dockable browser. **)
 Finalization

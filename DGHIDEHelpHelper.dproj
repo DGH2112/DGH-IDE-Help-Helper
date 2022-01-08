@@ -54,17 +54,19 @@
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
         <GenDll>true</GenDll>
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
-        <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
+        <DCC_ExeOutput>.\</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
         <DCC_N>false</DCC_N>
         <DCC_S>false</DCC_S>
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
+        <DCC_MapFile>3</DCC_MapFile>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>EurekaLogCore;FireDACASADriver;FireDACSqliteDriver;bindcompfmx;DBXSqliteDriver;FireDACPgDriver;FireDACODBCDriver;RESTBackendComponents;emsclientfiredac;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;FireDACCommon;bindcomp;inetdb;tethering;TeeDB;vclib;SynEditDR;DBXInterBaseDriver;Tee;vclFireDAC;xmlrtl;svnui;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;FireDACCommonDriver;MetropolisUILiveTile;bindcompdbx;bindengine;vclactnband;vcldb;soaprtl;vcldsnap;bindcompvcl;FMXTee;TeeUI;CodeSiteLoggingPkg;vclie;fmxFireDAC;FireDACADSDriver;vcltouch;CodeSiteDBToolsPkg;emsclient;CustomIPTransport;vclribbon;VCLRESTComponents;FireDAC;VclSmp;dsnap;Intraweb;fmxase;vcl;IndyCore;IndyIPServer;IndyIPCommon;CloudService;dsnapcon;FireDACIBDriver;FmxTeeUI;inet;IDEAutoSave;fmxobj;FireDACMySQLDriver;soapmidas;vclx;soapserver;inetdbxpress;svn;dsnapxml;fmxdae;RESTComponents;VirtualTreesR;FireDACMSAccDriver;dbexpress;adortl;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_UsePackage>FireDACASADriver;FireDACSqliteDriver;bindcompfmx;DBXSqliteDriver;FireDACPgDriver;FireDACODBCDriver;RESTBackendComponents;emsclientfiredac;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;FireDACCommon;bindcomp;inetdb;tethering;TeeDB;vclib;SynEditDR;DBXInterBaseDriver;Tee;vclFireDAC;xmlrtl;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;FireDACCommonDriver;MetropolisUILiveTile;bindcompdbx;bindengine;vclactnband;vcldb;soaprtl;vcldsnap;bindcompvcl;FMXTee;TeeUI;vclie;fmxFireDAC;FireDACADSDriver;vcltouch;emsclient;CustomIPTransport;vclribbon;VCLRESTComponents;FireDAC;VclSmp;dsnap;Intraweb;fmxase;vcl;IndyCore;IndyIPServer;IndyIPCommon;CloudService;dsnapcon;FireDACIBDriver;FmxTeeUI;inet;fmxobj;FireDACMySQLDriver;soapmidas;vclx;soapserver;inetdbxpress;dsnapxml;fmxdae;RESTComponents;VirtualTreesR;FireDACMSAccDriver;dbexpress;adortl;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
@@ -80,8 +82,7 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_Define>_CODESITELOGGING;$(DCC_Define)</DCC_Define>
         <Debugger_RunParams>-np -rDGHIDEHelpHelper</Debugger_RunParams>
-        <Debugger_HostApplication>C:\Program Files (x86)\Embarcadero\Studio\18.0\bin\bds.exe</Debugger_HostApplication>
-        <DCC_ExeOutput>..\</DCC_ExeOutput>
+        <Debugger_HostApplication>$(BDS)\bin\bds.exe</Debugger_HostApplication>
         <DCC_UsePackage>DesignIDE;RTL;VCL</DCC_UsePackage>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_DcuOutput>..\DCUs\XE102DCUs\</DCC_DcuOutput>
@@ -108,8 +109,8 @@
             <Form>ITHrVerInfo.res</Form>
         </RcCompile>
         <DCCReference Include="Source\InitialiseOTAInterface.pas"/>
-        <DCCReference Include="Source\UtilityFunctions.pas"/>
-        <DCCReference Include="Source\WizardInterface.pas"/>
+        <DCCReference Include="Source\DGHIDEHelpHelper.Functions.pas"/>
+        <DCCReference Include="Source\DGHIDEHelpHelper.Wizard.pas"/>
         <DCCReference Include="Source\KeyboardBindingInterface.pas"/>
         <DCCReference Include="Source\DockableBrowserForm.pas">
             <Form>frmDockableBrowser</Form>
@@ -131,6 +132,9 @@
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
+        <DCCReference Include="Source\DGHIDEHelpHelper.SplashScreen.pas"/>
+        <DCCReference Include="Source\DGHIDEHelpHelper.ResourceStrings.pas"/>
+        <DCCReference Include="Source\DGHIDEHelpHelper.Constants.pas"/>
         <None Include="Source\CompilerDefinitions.inc"/>
         <None Include="License.md"/>
         <None Include="README.md"/>
@@ -156,15 +160,15 @@
                     <Source Name="MainSource">DGHIDEHelpHelper.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k240.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp240.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k240.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp240.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k280.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp280.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k280.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp280.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule"/>
-                <DeployFile LocalName="..\DGHIDEHelpHelper.dll" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="DGHIDEHelpHelper.dll" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>DGHIDEHelpHelper.dll</RemoteName>
                         <Overwrite>true</Overwrite>
@@ -975,6 +979,11 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
+            <MMX>
+                <UsesClauseFormatter AutoFormat="1">
+                    <GroupNames>System;Vcl;WinApi;System.Win</GroupNames>
+                </UsesClauseFormatter>
+            </MMX>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
