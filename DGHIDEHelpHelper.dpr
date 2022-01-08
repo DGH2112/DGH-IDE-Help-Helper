@@ -39,7 +39,8 @@ uses
   WebBrowserFrame in 'Source\WebBrowserFrame.pas' {fmWebBrowser: TFrame},
   DGHIDEHelpHelper.SplashScreen in 'Source\DGHIDEHelpHelper.SplashScreen.pas',
   DGHIDEHelpHelper.ResourceStrings in 'Source\DGHIDEHelpHelper.ResourceStrings.pas',
-  DGHIDEHelpHelper.Constants in 'Source\DGHIDEHelpHelper.Constants.pas';
+  DGHIDEHelpHelper.Constants in 'Source\DGHIDEHelpHelper.Constants.pas',
+  DGHIDEHelpHelper.AboutBox in 'Source\DGHIDEHelpHelper.AboutBox.pas';
 
 {$INCLUDE Source\CompilerDefinitions.inc}
 {$INCLUDE Source\LibrarySuffixes.inc}

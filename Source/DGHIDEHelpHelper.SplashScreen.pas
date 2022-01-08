@@ -4,7 +4,7 @@
   the plug-in is loaded.
 
   @Author  David Hoyle
-  @Version 1.132
+  @Version 1.141
   @Date    08 Jan 2022
 
 **)
@@ -67,7 +67,7 @@ Begin
         SSS.AddPluginBitmap(
           Format(strSplashScreenName, [VerInfo.iMajor, VerInfo.iMinor, Copy(strRevision, VerInfo.iBugFix + 1, 1), Application.Title]),
           [bmSplashScreen],
-          False,
+          {$IFDEF DEBUG} True {$ELSE} False {$ENDIF DEBUG},
           Format(strSplashScreenBuild, [VerInfo.iMajor, VerInfo.iMinor, VerInfo.iBugfix, VerInfo.iBuild])
         );
       Finally
@@ -78,7 +78,7 @@ Begin
       SSS.AddPluginBitmap(
         Format(strSplashScreenName, [VerInfo.iMajor, VerInfo.iMinor, Copy(strRevision, VerInfo.iBugFix + 1, 1), Application.Title]),
         bmSplashScreen,
-        False,
+        {$IFDEF DEBUG} True {$ELSE} False {$ENDIF DEBUG},
         Format(strSplashScreenBuild, [VerInfo.iMajor, VerInfo.iMinor, VerInfo.iBugfix, VerInfo.iBuild])
       );
       {$ENDIF}

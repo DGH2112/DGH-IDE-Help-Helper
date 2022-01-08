@@ -135,6 +135,7 @@
         <DCCReference Include="Source\DGHIDEHelpHelper.SplashScreen.pas"/>
         <DCCReference Include="Source\DGHIDEHelpHelper.ResourceStrings.pas"/>
         <DCCReference Include="Source\DGHIDEHelpHelper.Constants.pas"/>
+        <DCCReference Include="Source\DGHIDEHelpHelper.AboutBox.pas"/>
         <None Include="Source\CompilerDefinitions.inc"/>
         <None Include="License.md"/>
         <None Include="README.md"/>

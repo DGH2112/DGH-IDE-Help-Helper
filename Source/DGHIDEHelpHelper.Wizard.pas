@@ -2,7 +2,7 @@
 
   This module contains the main wizard / menu wizard code for the IDE plugin.
 
-  @Version 1.010
+  @Version 1.060
   @Author  David Hoyle
   @Date    08 Jan 2022
 
@@ -22,11 +22,12 @@ Uses
 Type
   (** This class defines the main wizard interfaces for the application. **)
   TWizardTemplate = Class(TNotifierObject, IOTAWizard, IOTAMenuWizard)
-  {$IFDEF D2005} Strict {$ENDIF} Private
+  Strict Private
+    FAboutPluginIndex: Integer;
     {$IFDEF DXE00}
     FOpFrame : TIDEHelpHelperIDEOptionsInterface;
     {$ENDIF}
-  {$IFDEF D2005} Strict {$ENDIF} Protected
+  Strict Protected
   Public
     {$IFDEF DXE00}
     Constructor Create;
@@ -47,7 +48,8 @@ Implementation
 
 Uses
   DockableBrowserForm,
-  DGHIDEHelpHelper.SplashScreen;
+  DGHIDEHelpHelper.SplashScreen,
+  DGHIDEHelpHelper.AboutBox;
 
 {$IFDEF DXE00}
 (**
@@ -63,6 +65,7 @@ Constructor TWizardTemplate.Create;
 
 Begin
   TIHHSplashScreen.AddSplashScreenItem;
+  FAboutPluginIndex := TIHHAboutBox.InstallAboutBox;
   FOpFrame := TIDEHelpHelperIDEOptionsInterface.Create;
   (BorlandIDEServices As INTAEnvironmentOptionsServices).RegisterAddInOptions(FOpFrame);
 End;
@@ -80,6 +83,7 @@ Destructor TWizardTemplate.Destroy;
 Begin
   (BorlandIDEServices As INTAEnvironmentOptionsServices).UnregisterAddInOptions(FOpFrame);
   FOpFrame := Nil;
+  TIHHAboutBox.RemoveAboutBox(FAboutPluginIndex);
   Inherited Destroy;
 End;
 {$ENDIF}

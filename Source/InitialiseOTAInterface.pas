@@ -3,7 +3,7 @@
   This module contains methods for initialising all the various wizard interfaces required
   by the application.
 
-  @Version 1.132
+  @Version 1.271
   @Author  David Hoyle
   @Date    08 Jan 2022
 
@@ -49,20 +49,8 @@ Const
   iWizardFailState = -1;
 
 Var
-  {$IFDEF D2005}
-  (** A variable to hold the version information for the application. **)
-  VersionInfo            : TVersionInfo;
-  (** A variable to hold the bitmap for the application. **)
-  (** This is a 48x48 butmap variabes for the splash scren in RAD Studio 2005/6 and the
-      about box in 2005 and above. **)
-  bmSplashScreen48x48    : HBITMAP;
-  {$ENDIF}
   (** A variabel to hold the wizard index for the main wizard. **)
   iWizardIndex           : Integer = iWizardFailState;
-  {$IFDEF D0006}
-  (** A variabel to hold the wizard index for the about pluging. **)
-  iAboutPluginIndex      : Integer = iWizardFailState;
-  {$ENDIF}
   (** A variabel to hold the wizard index for the key binding wizard. **)
   iKeyBindingIndex       : Integer = iWizardFailState;
 
@@ -87,18 +75,6 @@ Begin
   Svcs := BorlandIDEServices As IOTAServices;
   ToolsAPI.BorlandIDEServices := BorlandIDEServices;
   Application.Handle := Svcs.GetParentHandle;
-  {$IFDEF D2005}
-  // Aboutbox plugin
-  bmSplashScreen48x48 := LoadBitmap(hInstance, 'DGHIDEHelpHelperSplashScreenBitMap48x48');
-  With VersionInfo Do
-    iAboutPluginIndex := (BorlandIDEServices As IOTAAboutBoxServices).AddPluginInfo(
-      Format(strSplashScreenName, [iMajor, iMinor, Copy(strRevision, iBugFix + 1, 1), Application.Title]),
-      'A wizard to intercept F1 calls and look up help on the web if not handled by the IDE..',
-      bmSplashScreen48x48,
-      False,
-      Format(strSplashScreenBuild, [iMajor, iMinor, iBugfix, iBuild]),
-      Format('SKU Build %d.%d.%d.%d', [iMajor, iMinor, iBugfix, iBuild]));
-  {$ENDIF}
   // Create Wizard / Menu Wizard
   Result := TWizardTemplate.Create;
   If WizardType = wtPackageWizard Then // Only register main wizard this way if PACKAGE
@@ -157,11 +133,6 @@ Finalization
   // Remove Wizard Interface
   If iWizardIndex > iWizardFailState Then
     (BorlandIDEServices As IOTAWizardServices).RemoveWizard(iWizardIndex);
-  {$IFDEF D2005}
-  // Remove Aboutbox Plugin Interface
-  If iAboutPluginIndex > iWizardFailState Then
-    (BorlandIDEServices As IOTAAboutBoxServices).RemovePluginInfo(iAboutPluginIndex);
-  {$ENDIF}
   // Remove Keyboard Binding Interface
   If iKeyBindingIndex > iWizardFailState Then
     (BorlandIDEServices As IOTAKeyboardServices).RemoveKeyboardBinding(iKeyBindingIndex);
