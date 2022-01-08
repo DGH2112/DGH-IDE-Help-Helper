@@ -1,11 +1,11 @@
 (**
 
-	This module contains a class which implements the INTAAddInOptions interface to provide
-	an options page within the IDEs options dialogue.
+  This module contains a class which implements the INTAAddInOptions interface to provide
+  an options page within the IDEs options dialogue.
 
-	@Version 1.009
-	@Author  David Hoyle
-	@Date    08 Jan 2022
+  @Version 1.032
+  @Author  David Hoyle
+  @Date    08 Jan 2022
 
 **)
 Unit IDEOptionsInterface;
@@ -13,48 +13,50 @@ Unit IDEOptionsInterface;
 Interface
 
 Uses
-	ToolsAPI,
-	Forms,
-	DGHIDEHelpHelperOptionsFrame;
+  ToolsAPI,
+  Forms,
+  DGHIDEHelpHelperOptionsFrame;
 
 {$INCLUDE CompilerDefinitions.inc}
 
 {$IFDEF DXE00}
 Type
-	(** A class to create an options frame page for the IDEs options dialogue. **)
-	TIDEHelpHelperIDEOptionsInterface = Class(TInterfacedObject, INTAAddInOptions)
-	Strict Private
-		FFrame : TfmIDEHelpHelperOptions;
-	Strict Protected
-	Public
-		Procedure DialogClosed(Accepted: Boolean);
-		Procedure FrameCreated(AFrame: TCustomFrame);
-		Function GetArea: String;
-		Function GetCaption: String;
-		Function GetFrameClass: TCustomFrameClass;
-		Function GetHelpContext: Integer;
-		Function IncludeInIDEInsight: Boolean;
-		Function ValidateContents: Boolean;
-	End;
+  (** A class to create an options frame page for the IDEs options dialogue. **)
+  TIDEHelpHelperIDEOptionsInterface = Class(TInterfacedObject, INTAAddInOptions)
+  Strict Private
+    FFrame : TfmIDEHelpHelperOptions;
+  Strict Protected
+  Public
+    Procedure DialogClosed(Accepted: Boolean);
+    Procedure FrameCreated(AFrame: TCustomFrame);
+    Function GetArea: String;
+    Function GetCaption: String;
+    Function GetFrameClass: TCustomFrameClass;
+    Function GetHelpContext: Integer;
+    Function IncludeInIDEInsight: Boolean;
+    Function ValidateContents: Boolean;
+  End;
 {$ENDIF}
 
 Implementation
 
 Uses
-	ApplicationsOptions;
+  ApplicationsOptions;
 
 {TIDEHelpHelperIDEOptionsInterface}
 
 {$IFDEF DXE00}
 (**
 
-	This method is call when the IDEs Options dialogue is closed. Accepted = True if the
-	dialogue is confirmed and settings should be saved or Accepted = False if the dialogue
-	if dismissed and setting changes should not be saved.
+  This method is call when the IDEs Options dialogue is closed. Accepted = True if the
+  dialogue is confirmed and settings should be saved or Accepted = False if the dialogue
+  if dismissed and setting changes should not be saved.
 
-	@precon  None.
-	@postcon If the dialogue is accepted then the options frame settings are retrieved and
-					 saved back to the applications options class.
+  @precon  None.
+  @postcon If the dialogue is accepted then the options frame settings are retrieved and
+           saved back to the applications options class.
+
+  @nocheck MissingCONSTInParam
 
   @param   Accepted as a Boolean
 
@@ -78,45 +80,47 @@ End;
   frame for you and should be used to initialise the frame information.
 
   @precon  None.
-	@postcon Checks the frame is the correct frames and is so initialises the frame through
-					 its Initialise Frame method.
+  @postcon Checks the frame is the correct frames and is so initialises the frame through
+           its Initialise Frame method.
 
-	@param   AFrame as a TCustomFrame
+  @nocheck MissingCONSTInParam
+
+  @param   AFrame as a TCustomFrame
 
 **)
 Procedure TIDEHelpHelperIDEOptionsInterface.FrameCreated(AFrame: TCustomFrame);
 
 Begin
-	If AFrame Is TfmIDEHelpHelperOptions Then
-		Begin
-			FFrame := AFrame As TfmIDEHelpHelperOptions;
-			FFrame.InitialiseFrame(AppOptions.SearchURLs, AppOptions.PermanentURLs,
-				AppOptions.SearchURLIndex);
-		End;
+  If AFrame Is TfmIDEHelpHelperOptions Then
+    Begin
+      FFrame := AFrame As TfmIDEHelpHelperOptions;
+      FFrame.InitialiseFrame(AppOptions.SearchURLs, AppOptions.PermanentURLs,
+        AppOptions.SearchURLIndex);
+    End;
 End;
 
 (**
 
-	This is called by the IDE to get the primary area in the options tree where your options
-	frame is to be displayed. Recommended to return a null string to have your options
-	displayed under a third party node.
+  This is called by the IDE to get the primary area in the options tree where your options
+  frame is to be displayed. Recommended to return a null string to have your options
+  displayed under a third party node.
 
-	@precon  None.
-	@postcon Returns a null string to place the options under the Third Party node.
+  @precon  None.
+  @postcon Returns a null string to place the options under the Third Party node.
 
-	@return  a String
+  @return  a String
 
 **)
 Function TIDEHelpHelperIDEOptionsInterface.GetArea: String;
 
 Begin
-	Result := '';
+  Result := '';
 End;
 
 (**
 
-	This method is called by the IDE to get the sub node tree items where the page is to be
-	displayed. The period acts as a separator for another level of node in the tree.
+  This method is called by the IDE to get the sub node tree items where the page is to be
+  displayed. The period acts as a separator for another level of node in the tree.
 
   @precon  None.
   @postcon Returns the name of the expert then the page name separated by a period.
@@ -126,8 +130,11 @@ End;
 **)
 Function TIDEHelpHelperIDEOptionsInterface.GetCaption: String;
 
+Const
+  strIDEHelpHelperOptions = 'IDE Help Helper.Options';
+
 Begin
-  Result := 'IDE Help Helper.Options';
+  Result := strIDEHelpHelperOptions;
 End;
 
 (**
@@ -149,35 +156,35 @@ End;
 
 (**
 
-	This method returns the help context reference for the options page.
+  This method returns the help context reference for the options page.
 
-	@precon  None.
-	@postcon Returns 0 for no context.
+  @precon  None.
+  @postcon Returns 0 for no context.
 
-	@return  an Integer
+  @return  an Integer
 
 **)
 Function TIDEHelpHelperIDEOptionsInterface.GetHelpContext: Integer;
 
 Begin
-	Result := 0;
+  Result := 0;
 End;
 
 (**
 
-	This method determines whether your options frame page appears in the IDE Insight
-	search. Its recommended you return true.
+  This method determines whether your options frame page appears in the IDE Insight
+  search. Its recommended you return true.
 
-	@precon  None.
-	@postcon Returns true to include in IDE Insight.
+  @precon  None.
+  @postcon Returns true to include in IDE Insight.
 
-	@return  a Boolean
+  @return  a Boolean
 
 **)
 Function TIDEHelpHelperIDEOptionsInterface.IncludeInIDEInsight: Boolean;
 
 Begin
-	Result := True;
+  Result := True;
 End;
 
 (**

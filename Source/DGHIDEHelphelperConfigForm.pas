@@ -1,9 +1,9 @@
 (**
 
-	This module contains a class to represent a configuration for for the applications
-	options.
+  This module contains a class to represent a configuration for for the applications
+  options.
 
-  @Version 1.012
+  @Version 1.138
   @Author  David Hoyle
   @Date    08 Jan 2022
 
@@ -41,7 +41,7 @@ Type
     FFrame : TfmIDEHelpHelperOptions;
   Public
     {Public declarations}
-    Class Function Execute(slSearchURLs, slPermanentURLs : TStringList;
+    Class Function Execute(Const slSearchURLs, slPermanentURLs : TStringList;
       var iSearchURL : Integer) : Boolean;
   End;
 
@@ -58,42 +58,45 @@ Uses
 
 (**
 
-  This is the forms main interface method for invoking the dialogue. The method will
-  return true if the dialogue was confirmed and the data has changed.
+  This is the forms main interface method for invoking the dialogue. The method will return true if the 
+  dialogue was confirmed and the data has changed.
 
   @precon  The string lists must be valid instances.
-  @postcon The pass variables are updated in the dialogue is confirmed and true is
-           returned else they are not modified and false is returned.
+  @postcon The pass variables are updated in the dialogue is confirmed and true is returned else they 
+           are not modified and false is returned.
 
-	@param   slSearchURLs    as a TStringList
-	@param   slPermanentURLs as a TStringList
-	@param   iSearchURL      as an Integer as a reference
-	@return  a Boolean
+  @param   slSearchURLs    as a TStringList as a constant
+  @param   slPermanentURLs as a TStringList as a constant
+  @param   iSearchURL      as an Integer as a reference
+  @return  a Boolean
 
 **)
-Class Function TfrmDGHIDEHelphelperConfig.Execute(slSearchURLs,
-	slPermanentURLs : TStringList; var iSearchURL : Integer): Boolean;
+Class Function TfrmDGHIDEHelphelperConfig.Execute(Const slSearchURLs,
+  slPermanentURLs : TStringList; Var iSearchURL : Integer): Boolean;
+  
+Var
+  frm: TfrmDGHIDEHelphelperConfig;
 
 Begin
-	Result := False;
-	With TfrmDGHIDEHelphelperConfig.Create(Nil) Do
-		Try
-			FFrame.InitialiseFrame(slSearchURLs, slPermanentURLs, iSearchURL);
-			If ShowModal = mrOk Then
-				Begin
-					FFrame.FinaliseFrame(slSearchURLs, slPermanentURLs, iSearchURL);
-					Result := True;
-				End;
-		Finally
-			Free;
-		End;
+  Result := False;
+  frm := TfrmDGHIDEHelphelperConfig.Create(Nil);
+  Try
+    frm.FFrame.InitialiseFrame(slSearchURLs, slPermanentURLs, iSearchURL);
+    If frm.ShowModal = mrOk Then
+      Begin
+        frm.FFrame.FinaliseFrame(slSearchURLs, slPermanentURLs, iSearchURL);
+        Result := True;
+      End;
+  Finally
+    frm.Free;
+  End;
 End;
 
 (**
 
-	This is an On Form Create Event Handler for the TfrmDGHIDEHelpHelperConfig class.
+  This is an On Form Create Event Handler for the TfrmDGHIDEHelpHelperConfig class.
 
-	@precon  None.
+  @precon  None.
   @postcon Creates the configuration frame.
 
   @param   Sender as a TObject
