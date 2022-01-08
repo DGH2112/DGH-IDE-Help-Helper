@@ -1,10 +1,10 @@
 (**
 
-  This module contains a frame for the web browser so that this code can be used in more
-  than one applciation without having to conditionally compile a form for inclusion in the
+	This module contains a frame for the web browser so that this code can be used in more
+	than one application without having to conditionally compile a form for inclusion in the
   IDE or an external application.
 
-  @Version 1.006
+  @Version 1.019
   @Author  David Hoyle
   @Date    08 Jan 2022
 
@@ -65,47 +65,47 @@ Type
     procedure wbBrowserBeforeNavigate2(ASender: TObject; const pDisp: IDispatch;
       const URL, Flags, TargetFrameName, PostData, Headers: OleVariant;
       var Cancel: WordBool);
-    procedure wbBrowserStatusTextChange(ASender: TObject; const Text: WideString);
-    procedure cbxURLKeyPress(Sender: TObject; var Key: Char);
-    procedure actStopExecute(Sender: TObject);
-    procedure actRefreshExecute(Sender: TObject);
-    procedure wbBrowserDocumentComplete(ASender: TObject; const pDisp: IDispatch;
-      const URL: OleVariant);
-    procedure sbrStatusDrawPanel(StatusBar: TStatusBar; Panel: TStatusPanel;
-      const Rect: TRect);
-    procedure actConfigureExecute(Sender: TObject);
-    procedure cbxURLSelect(Sender: TObject);
-    procedure actOpenExecute(Sender: TObject);
-    procedure wbBrowserTitleChange(ASender: TObject; const Text: WideString);
-  Private
-    {Private declarations}
-    FPercent : Double;
-  Public
-    {Public declarations}
-    Constructor Create(AOwner : TComponent); Override;
-    Procedure Navigate(strURL: String);
-    Function  CurrentURL : String;
-  End;
+		procedure wbBrowserStatusTextChange(ASender: TObject; const Text: WideString);
+		procedure cbxURLKeyPress(Sender: TObject; var Key: Char);
+		procedure actStopExecute(Sender: TObject);
+		procedure actRefreshExecute(Sender: TObject);
+		procedure wbBrowserDocumentComplete(ASender: TObject; const pDisp: IDispatch;
+			const URL: OleVariant);
+		procedure sbrStatusDrawPanel(StatusBar: TStatusBar; Panel: TStatusPanel;
+			const Rect: TRect);
+		procedure actConfigureExecute(Sender: TObject);
+		procedure cbxURLSelect(Sender: TObject);
+		procedure actOpenExecute(Sender: TObject);
+		procedure wbBrowserTitleChange(ASender: TObject; const Text: WideString);
+	Private
+		{Private declarations}
+		FPercent : Double;
+	Public
+		{Public declarations}
+		Constructor Create(AOwner : TComponent); Override;
+		Procedure Navigate(strURL: String);
+		Function  CurrentURL : String;
+	End;
 
 Implementation
 
 {$R *.dfm}
 
 Uses
-  DGHIDEHelpHelper.Functions,
-  DGHIDEHelphelperConfigForm,
-  ApplicationsOptions,
-  ShellAPI,
-  ToolsAPI;
+	DGHIDEHelpHelper.Functions,
+	DGHIDEHelphelperConfigForm,
+	ApplicationsOptions,
+	ShellAPI,
+	ToolsAPI;
 
 {TfmWebBrowser}
 
 (**
 
-  This is an on execute event handler for the Back action.
+	This is an on execute event handler for the Back action.
 
-  @precon  None.
-  @postcon Asks the browser to go to the previous pahe in the history.
+	@precon  None.
+	@postcon Asks the browser to go to the previous page in the history.
 
   @param   Sender as a TObject
 
@@ -139,7 +139,7 @@ Begin
   {$IFNDEF DXE00}
   iIndex := AppOptions.SearchURLIndex;
   If TfrmDGHIDEHelphelperConfig.Execute(AppOptions.SearchURLs, AppOptions.PermanentURLs,
-    iIndex) Then
+		iIndex) Then
     Begin
       AppOptions.SearchURLIndex := iIndex;
       For i := 0 To AppOptions.PermanentURLs.Count - 1 Do
@@ -203,24 +203,24 @@ End;
   This is an on execute event handler for the Stop action.
 
   @precon  None.
-  @postcon Aks the browser to stop processing the currently loading page.
+	@postcon Asks the browser to stop processing the currently loading page.
 
-  @param   Sender as a TObject
+	@param   Sender as a TObject
 
 **)
 Procedure TfmWebBrowser.actStopExecute(Sender: TObject);
 
 Begin
-  wbBrowser.Stop;
+	wbBrowser.Stop;
 End;
 
 (**
 
-  This is an on key press event handler for the URL combo box.
+	This is an on key press event handler for the URL combo box.
 
-  @precon  None.
-  @postcon If the enter key is pressed it forces the browser to display for the current
-           URL. If this is not a qualitied URL a default search will be done.
+	@precon  None.
+	@postcon If the enter key is pressed it forces the browser to display for the current
+					 URL. If this is not a qualified URL a default search will be done.
 
   @param   Sender as a TObject
   @param   Key    as a Char as a reference
@@ -233,7 +233,7 @@ Begin
     Begin
       wbBrowser.Navigate(cbxURL.Text);
       Key := #0;
-    End;
+		End;
 End;
 
 (**
@@ -287,29 +287,28 @@ End;
 
 (**
 
-  This method is the only public method for the class and is used by external code to
-  invoke the browser to dislpay a URL.
+	This method is the only public method for the class and is used by external code to
+	invoke the browser to display a URL.
 
-  @precon  None.
-  @postcon The given URL is displayed.
+	@precon  None.
+	@postcon The given URL is displayed.
 
-  @param   strURL as a String
+	@param   strURL as a String
 
 **)
 Procedure TfmWebBrowser.Navigate(strURL: String);
 
 Begin
-  wbBrowser.Navigate(strURL);
+	wbBrowser.Navigate(strURL);
 End;
 
 (**
 
-  This is an owner draw method for the status bar panel and is used to draw a progress bar
-  in the second panel for the loading of the page in the browser.
+	This is an owner draw method for the status bar panel and is used to draw a progress bar
+	in the second panel for the loading of the page in the browser.
 
-  @precon  None.
-  @postcon The progress of the browser loading is dislpayed as a progress ar with a
-           percentage.
+	@precon  None.
+	@postcon The progress of the browser loading is displayed as a progress with a percentage.
 
   @param   StatusBar as a TStatusBar
   @param   Panel     as a TStatusPanel
@@ -344,40 +343,40 @@ End;
 
 (**
 
-  This is an on BeforeNavigate event handler for the browser.
+	This is an on Before Navigate event handler for the browser.
 
-  @precon  None.
-  @postcon The browser toolbar buttons are updated and the URL is added to the list of
-           URLs.
+	@precon  None.
+	@postcon The browser toolbar buttons are updated and the URL is added to the list of
+					 URLs.
 
-  @param   ASender         as a TObject
-  @param   pDisp           as an IDispatch as a constant
-  @param   URL             as an OleVariant as a constant
-  @param   Flags           as an OleVariant as a constant
-  @param   TargetFrameName as an OleVariant as a constant
-  @param   PostData        as an OleVariant as a constant
-  @param   Headers         as an OleVariant as a constant
-  @param   Cancel          as a WordBool as a reference
+	@param   ASender         as a TObject
+	@param   pDisp           as an IDispatch as a constant
+	@param   URL             as an OleVariant as a constant
+	@param   Flags           as an OleVariant as a constant
+	@param   TargetFrameName as an OleVariant as a constant
+	@param   PostData        as an OleVariant as a constant
+	@param   Headers         as an OleVariant as a constant
+	@param   Cancel          as a WordBool as a reference
 
 **)
 Procedure TfmWebBrowser.wbBrowserBeforeNavigate2(ASender: TObject; Const pDisp: IDispatch;
-  Const URL, Flags, TargetFrameName, PostData, Headers: OleVariant; Var Cancel: WordBool);
+	Const URL, Flags, TargetFrameName, PostData, Headers: OleVariant; Var Cancel: WordBool);
 
 Begin
-  cbxURL.Text := VarToStr(URL);
-  If cbxURL.Items.IndexOf(cbxURL.Text) = -1 Then
-    cbxURL.Items.Add(cbxURL.Text);
-  actStop.Enabled := True;
-  actRefresh.Enabled := False;
-  actOpen.Enabled := True;
+	cbxURL.Text := VarToStr(URL);
+	If cbxURL.Items.IndexOf(cbxURL.Text) = -1 Then
+		cbxURL.Items.Add(cbxURL.Text);
+	actStop.Enabled := True;
+	actRefresh.Enabled := False;
+	actOpen.Enabled := True;
 End;
 
 (**
 
-  This is an on change event handler for the Browser control.
+	This is an on change event handler for the Browser control.
 
-  @precon  None.
-  @postcon This is upudates the state of the Back and Forward toolbar buttons.
+	@precon  None.
+	@postcon This is updates the state of the Back and Forward toolbar buttons.
 
   @param   ASender as a TObject
   @param   Command as an Integer
@@ -423,25 +422,25 @@ End;
 
 (**
 
-  This is an on DownloadBegin event handler for the browser.
+	This is an on Download Begin event handler for the browser.
 
-  @precon  None.
-  @postcon Updates the status panel to say loading.
+	@precon  None.
+	@postcon Updates the status panel to say loading.
 
-  @param   Sender as a TObject
+	@param   Sender as a TObject
 
 **)
 Procedure TfmWebBrowser.wbBrowserDownloadBegin(Sender: TObject);
 
 Begin
-  sbrStatus.Panels[0].Text := 'Loading...';
+	sbrStatus.Panels[0].Text := 'Loading...';
 End;
 
 (**
 
-  This is an on DownloadComplete event handler for the browser.
+	This is an on Download Complete event handler for the browser.
 
-  @precon  None.
+	@precon  None.
   @postcon Updates the status panel to say loaded.
 
   @param   Sender as a TObject

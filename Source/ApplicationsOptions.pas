@@ -3,9 +3,9 @@
   This module contains a class to handle all the applications settings (including loading
   and saving them to an INI file) and make them available to the whole application.
 
-  @Version 1.0
+  @Version 1.020
   @Author  David Hoyle
-  @Date    07 Apr 2016
+  @Date    08 Jan 2022
 
 **)
 Unit ApplicationsOptions;
@@ -16,33 +16,33 @@ Uses
   Classes;
 
 Type
-  (** A class to handling the applications settings. **)
-  TAppOptions = Class
-  Strict Private
-    FSearchURLs     : TStringList;
-    FPermanentURLs  : TStringList;
-    FSearchURLIndex : Integer;
-    FINIFileName    : String;
-  Strict Protected
-    Procedure LoadSettings;
-    Procedure SaveSettings;
-  Public
-    Constructor Create;
-    Destructor Destroy; Override;
-    (**
-      This property returns a reference to the Searches URL string list. This is a list of
-      URLs with %s within then where the Identifier that needs to be looked up will be
-      inserted.
-      @precon  None.
-      @postcon Returns a reference to the Search URL string list.
-      @return  a TStringList
-    **)
-    Property SearchURLs : TStringList Read FSearchURLs;
-    (**
-      This property returns a refernce to the Permanent URLs string list. This is a simple
-      list of URLs whihc will always be available in the browser URL drop down.
-      @precon  None.
-      @postcon Returns a refernce to the Permanent URLs string list.
+	(** A class to handling the applications settings. **)
+	TAppOptions = Class
+	Strict Private
+		FSearchURLs     : TStringList;
+		FPermanentURLs  : TStringList;
+		FSearchURLIndex : Integer;
+		FINIFileName    : String;
+	Strict Protected
+		Procedure LoadSettings;
+		Procedure SaveSettings;
+	Public
+		Constructor Create;
+		Destructor Destroy; Override;
+		(**
+			This property returns a reference to the Searches URL string list. This is a list of
+			URLs with %s within then where the Identifier that needs to be looked up will be
+			inserted.
+			@precon  None.
+			@postcon Returns a reference to the Search URL string list.
+			@return  a TStringList
+		**)
+		Property SearchURLs : TStringList Read FSearchURLs;
+		(**
+			This property returns a reference to the Permanent URLs string list. This is a simple
+			list of URLs which will always be available in the browser URL drop down.
+			@precon  None.
+			@postcon Returns a reference to the Permanent URLs string list.
       @return  a TStringList
     **)
     property PermanentURLs : TStringList Read FPermanentURLs;
@@ -80,8 +80,8 @@ Uses
   A constructor for the TAppOptions class.
 
   @precon  None.
-  @postcon Creates th various string lists, then builds the INI file Name and finally
-           loads the applications settings.
+	@postcon Creates the various string lists, then builds the INI file Name and finally
+					 loads the applications settings.
 
 **)
 Constructor TAppOptions.Create;
@@ -89,29 +89,29 @@ Constructor TAppOptions.Create;
 {$IFNDEF D2009}
 // This constant doesn't exist in Delphi 2007 and below
 Const
-  SHGFP_TYPE_CURRENT = 0; { current value for user, verify it exists }
+	SHGFP_TYPE_CURRENT = 0; { current value for user, verify it exists }
 {$ENDIF}
 
 Begin
-  FSearchURLs := TStringList.Create;
-  FPermanentURLs := TStringList.Create;
-  SetLength(FINIFileName, MAX_PATH);
-  SHGetFolderPath(0, CSIDL_APPDATA Or CSIDL_FLAG_CREATE, 0, SHGFP_TYPE_CURRENT,
-    PChar(FINIFileName));
-  FINIFileName := StrPas(PChar(FINIFileName));
-  FINIFileName := FINIFileName + '\Season''s Fall\';
-  If Not DirectoryExists(FINIFileName) Then
-    ForceDirectories(FINIFileName);
-  FINIFileName := FINIFileName + 'DGH IDE Help Helper Settings.ini';
-  LoadSettings;
+	FSearchURLs := TStringList.Create;
+	FPermanentURLs := TStringList.Create;
+	SetLength(FINIFileName, MAX_PATH);
+	SHGetFolderPath(0, CSIDL_APPDATA Or CSIDL_FLAG_CREATE, 0, SHGFP_TYPE_CURRENT,
+		PChar(FINIFileName));
+	FINIFileName := StrPas(PChar(FINIFileName));
+	FINIFileName := FINIFileName + '\Season''s Fall\';
+	If Not DirectoryExists(FINIFileName) Then
+		ForceDirectories(FINIFileName);
+	FINIFileName := FINIFileName + 'DGH IDE Help Helper Settings.ini';
+	LoadSettings;
 End;
 
 (**
 
-  A destructor for the TAppOptions class.
+	A destructor for the TAppOptions class.
 
-  @precon  None.
-  @postcon saves the applications setttings and frees the string lists.
+	@precon  None.
+  @postcon saves the applications settings and frees the string lists.
 
 **)
 Destructor TAppOptions.Destroy;

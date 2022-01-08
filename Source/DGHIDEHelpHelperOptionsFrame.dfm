@@ -38,7 +38,7 @@ object fmIDEHelpHelperOptions: TfmIDEHelpHelperOptions
       Left = 0
       Top = 0
       Width = 608
-      Height = 151
+      Height = 152
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 0
@@ -61,7 +61,7 @@ object fmIDEHelpHelperOptions: TfmIDEHelpHelperOptions
       end
       object pnlSearchButtons: TPanel
         Left = 0
-        Top = 119
+        Top = 120
         Width = 608
         Height = 32
         Align = alBottom
@@ -149,23 +149,23 @@ object fmIDEHelpHelperOptions: TfmIDEHelpHelperOptions
         Left = 3
         Top = 22
         Width = 602
-        Height = 94
-        OnClickCheck = lbxSearchURLsClickCheck
+        Height = 95
         Align = alClient
         DoubleBuffered = True
-        ItemHeight = 13
+        ItemHeight = 15
         ParentDoubleBuffered = False
         TabOrder = 1
         OnClick = lbxSearchURLsClick
+        OnClickCheck = lbxSearchURLsClickCheck
         OnKeyDown = FormKeyDown
         OnMouseDown = lbxSearchURLsMouseDown
       end
     end
     object pnlPermanentURLs: TPanel
       Left = 0
-      Top = 151
+      Top = 152
       Width = 608
-      Height = 152
+      Height = 151
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
@@ -191,15 +191,15 @@ object fmIDEHelpHelperOptions: TfmIDEHelpHelperOptions
         Left = 3
         Top = 22
         Width = 602
-        Height = 95
+        Height = 94
         Align = alClient
-        ItemHeight = 13
+        ItemHeight = 15
         TabOrder = 0
         OnClick = lbxPermanentURLsClick
       end
       object pnlPermanentButtons: TPanel
         Left = 0
-        Top = 120
+        Top = 119
         Width = 608
         Height = 32
         Align = alBottom

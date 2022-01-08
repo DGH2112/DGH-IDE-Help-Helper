@@ -3,9 +3,9 @@
   This module contains a IDE derived dockable form to contain the results of the
   searches where the IDE cannot provide help.
 
-  @Version 1.0
+  @Version 1.012
   @Author  David Hoyle
-  @Date    19 Apr 2016
+  @Date    08 Jan 2022
 
 **)
 Unit DockableBrowserForm;
@@ -65,63 +65,63 @@ Uses
   ApplicationsOptions;
 
 Var
-  (** This is a private varaible to hold the singleton instance of the
-      dockable form. **)
-  FormInstance : TfrmDockableBrowser;
+	(** This is a private variable to hold the singleton instance of the
+			dockable form. **)
+	FormInstance : TfrmDockableBrowser;
 
 (**
 
-  This procedure makes the dockable module explorer visible.
+	This procedure makes the dockable module explorer visible.
 
-  @precon  None.
-  @postcon Makes the dockable module explorer visible.
+	@precon  None.
+	@postcon Makes the dockable module explorer visible.
 
-  @param   Form as a TfrmDockableBrowser
+	@param   Form as a TfrmDockableBrowser
 
 **)
 Procedure ShowDockableForm(Form : TfrmDockableBrowser);
 
 Begin
-  If Not Assigned(Form) Then
-    Exit;
-  If Not Form.Floating Then
-    Begin
-      Form.ForceShow;
-      FocusWindow(Form);
-      Form.Focus;
-    End Else
-    Begin
-      Form.Show;
-      Form.Focus;
-    End;
-  If Form.Visible And (Form.CurrentURL = '') And (AppOptions.PermanentURLs.Count > 0) Then
-    Form.Execute(AppOptions.PermanentURLs[0]);
+	If Not Assigned(Form) Then
+		Exit;
+	If Not Form.Floating Then
+		Begin
+			Form.ForceShow;
+			FocusWindow(Form);
+			Form.Focus;
+		End Else
+		Begin
+			Form.Show;
+			Form.Focus;
+		End;
+	If Form.Visible And (Form.CurrentURL = '') And (AppOptions.PermanentURLs.Count > 0) Then
+		Form.Execute(AppOptions.PermanentURLs[0]);
 End;
 
 (**
 
-  This procedure registers the dockable form with the IDE.
+	This procedure registers the dockable form with the IDE.
 
-  @precon  None.
-  @postcon The dockable form is registered with the IDE.
+	@precon  None.
+	@postcon The dockable form is registered with the IDE.
 
-  @param   FormClass as a TfrmDockableBrowserClass
-  @param   FormVar
-  @param   FormName  as a String as a constant
+	@param   FormClass as a TfrmDockableBrowserClass
+	@param   FormVar
+	@param   FormName  as a String as a constant
 
 **)
 Procedure RegisterDockableForm(FormClass : TfrmDockableBrowserClass; var FormVar;
-  Const FormName : String);
+	Const FormName : String);
 
 Begin
-  If @RegisterFieldAddress <> Nil Then
-    RegisterFieldAddress(FormName, @FormVar);
-  RegisterDesktopFormClass(FormClass, FormName, FormName);
+	If @RegisterFieldAddress <> Nil Then
+		RegisterFieldAddress(FormName, @FormVar);
+	RegisterDesktopFormClass(FormClass, FormName, FormName);
 End;
 
 (**
 
-  This method unregisters the dockable form with the IDE.
+	This method un-registers the dockable form with the IDE.
 
   @precon  None.
   @postcon The dockable form is unregistered with the IDE.
@@ -140,45 +140,45 @@ End;
 
   This procedure creates an instance of the dockable form.
 
-  @precon  FormVar is the instance reference and FormCass is the type of class
-           to be created..
-  @postcon The form instance is created.
+	@precon  FormVar is the instance reference and Form Class is the type of class
+					 to be created..
+	@postcon The form instance is created.
 
-  @param   FormVar   as a TfrmDockableBrowser as a reference
-  @param   FormClass as a TfrmDockableBrowserClass
+	@param   FormVar   as a TfrmDockableBrowser as a reference
+	@param   FormClass as a TfrmDockableBrowserClass
 
 **)
 Procedure CreateDockableForm(var FormVar : TfrmDockableBrowser;
-  FormClass : TfrmDockableBrowserClass);
+	FormClass : TfrmDockableBrowserClass);
 Begin
-  TCustomForm(FormVar) := FormClass.Create(Nil);
-  RegisterDockableform(FormClass, FormVar, TCustomForm(FormVar).Name);
+	TCustomForm(FormVar) := FormClass.Create(Nil);
+	RegisterDockableform(FormClass, FormVar, TCustomForm(FormVar).Name);
 End;
 
 (**
 
-  This procedure frees the instance of the dockable form.
+	This procedure frees the instance of the dockable form.
 
-  @precon  None.
-  @postcon Free the instance of the dockable form.
+	@precon  None.
+	@postcon Free the instance of the dockable form.
 
-  @param   FormVar as a TfrmDockableBrowser as a reference
+	@param   FormVar as a TfrmDockableBrowser as a reference
 
 **)
 Procedure FreeDockableForm(var FormVar : TfrmDockableBrowser);
 Begin
-  If Assigned(FormVar) Then
-    Begin
-      UnRegisterDockableForm(FormVar, FormVar.Name);
-      FreeAndNil(FormVar);
-    End;
+	If Assigned(FormVar) Then
+		Begin
+			UnRegisterDockableForm(FormVar, FormVar.Name);
+			FreeAndNil(FormVar);
+		End;
 End;
 
 { TfrmDockableBrowser }
 
 (**
 
-  This is the constructor method for the TfrmDockableModuleExplorer class.
+	This is the constructor method for the TfrmDockableBrowser class.
 
   @precon  None.
   @postcon Sets the dockable form up for being saved within the BDS 2006 IDE and
@@ -201,52 +201,54 @@ end;
 
 (**
 
-  This is the destructor method for the TfrmDockableModuleExplorer class.
+  This is the destructor method for the TfrmDockableBrowser class.
 
-  @precon  None.
-  @postcon Destroys the Module Explorer Frame and ensures the desktop is saved.
+	@precon  None.
+	@postcon Destroys the Module Explorer Frame and ensures the desktop is saved.
 
 **)
 destructor TfrmDockableBrowser.Destroy;
 
 begin
-  SaveStateNecessary := True;
-  inherited;
+	SaveStateNecessary := True;
+	inherited;
 end;
 
 (**
 
-  This method focuses the modukle explorers tree view the be focused IF
-  available.
 
-  @precon  None.
-  @postcon Focuses the modukle explorers tree view the be focused IF available.
+	This method focuses the module explorers tree view the be focused IF
+	available.
 
-**)
+	@precon  None.
+	@postcon Focuses the module explorers tree view the be focused IF available.
+
+
+**)
 procedure TfrmDockableBrowser.Focus;
 
 begin
-  FormInstance.SetFocus;
+	FormInstance.SetFocus;
 end;
 
 (**
 
-  This is a class method to create the dockable form instance.
+	This is a class method to create the dockable form instance.
 
-  @precon  None.
-  @postcon The form instance is created if one is not already present.
+	@precon  None.
+	@postcon The form instance is created if one is not already present.
 
 **)
 class procedure TfrmDockableBrowser.CreateDockableBrowser;
 
 begin
-  If Not Assigned(FormInstance) Then
-    CreateDockableForm(FormInstance, TfrmDockableBrowser);
+	If Not Assigned(FormInstance) Then
+		CreateDockableForm(FormInstance, TfrmDockableBrowser);
 end;
 
 (**
 
-  This method returns the current URL of the browser frame.
+	This method returns the current URL of the browser frame.
 
   @precon  None.
   @postcon The current URL of the browser is returned.
@@ -292,7 +294,7 @@ end;
 
 (**
 
-  This is th forms main method for displaying the results of the given URL.
+  This is the forms main method for displaying the results of the given URL.
 
   @precon  None.
   @postcon If the form exists (which it should) the web browser is asked to render the

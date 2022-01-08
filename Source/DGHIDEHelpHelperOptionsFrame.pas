@@ -3,9 +3,9 @@
   This module contains a frame which represents the controls for configuring the IDE Help
   Helper settings.
 
-  @Version 1.0
+  @Version 1.008
   @Author  David Hoyle
-  @Date    07 Apr 2016
+  @Date    08 Jan 2022
 
 **)
 Unit DGHIDEHelpHelperOptionsFrame;
@@ -62,31 +62,31 @@ Type
   Private
     {Private declarations}
     (** This variable is updated to the index of the clicked item in the Search URLs
-        listbox so that is check value can be left along when the other check marks
-        are reset. **)
-    FClickIndex: Integer;
-  Public
-    {Public declarations}
-    Procedure InitialiseFrame(slSearchURLs, slPermanentURLs : TStringList;
-      iSearchURL : Integer);
-    Procedure FinaliseFrame(slSearchURLs, slPermanentURLs : TStringList;
-      var iSearchURL : Integer);
-  End;
+				list box so that is check value can be left along when the other check marks
+				are reset. **)
+		FClickIndex: Integer;
+	Public
+		{Public declarations}
+		Procedure InitialiseFrame(slSearchURLs, slPermanentURLs : TStringList;
+			iSearchURL : Integer);
+		Procedure FinaliseFrame(slSearchURLs, slPermanentURLs : TStringList;
+			var iSearchURL : Integer);
+	End;
 
 Implementation
 
 {$R *.dfm}
 
 Const
-  (** This is a message template for the removal of items from the URL lists. **)
-  strMsg = 'Are you sure you want to remove "%s" from this list?';
+	(** This is a message template for the removal of items from the URL lists. **)
+	strMsg = 'Are you sure you want to remove "%s" from this list?';
 
 (**
 
-  This is an on click event handler for the Add button for Permanent URLs.
+	This is an on click event handler for the Add button for Permanent URLs.
 
-  @precon  None.
-  @postcon Adds a Permanent URL to the list IF the InputQuery is confirmed.
+	@precon  None.
+	@postcon Adds a Permanent URL to the list IF the Input Query is confirmed.
 
   @param   Sender as a TObject
 
@@ -106,7 +106,7 @@ End;
   This is an on click event handler for the Add button for Search URLs.
 
   @precon  None.
-  @postcon Adds a Search URL to the list IF the InputQuery is confirmed.
+	@postcon Adds a Search URL to the list IF the Input Query is confirmed.
 
   @param   Sender as a TObject
 
@@ -170,7 +170,7 @@ End;
   @postcon Prompts the user to delete the selected entry and if confirmed deletes the
            item.
 
-  @param   Sender as a TObject
+	@param   Sender as a TObject
 
 **)
 Procedure TfmIDEHelpHelperOptions.btnDeleteSearchClick(Sender: TObject);
@@ -236,7 +236,7 @@ End;
 
 (**
 
-  This method retreives the settings from the frame and returns them to the calling code.
+	This method retrieves the settings from the frame and returns them to the calling code.
 
   @precon  The strings lists MUST be valid instances.
   @postcon The updated information in the frame is returned to the calling code through
@@ -293,70 +293,70 @@ End;
 (**
 
   This method initialises the controls in the frame with the information in the
-  parameters.
+	parameters.
 
-  @precon  The strign lists must be valid instances.
-  @postcon The frame is initialised.
+	@precon  The string lists must be valid instances.
+	@postcon The frame is initialised.
 
-  @param   slSearchURLs    as a TStringList
-  @param   slPermanentURLs as a TStringList
-  @param   iSearchURL      as an Integer
+	@param   slSearchURLs    as a TStringList
+	@param   slPermanentURLs as a TStringList
+	@param   iSearchURL      as an Integer
 
 **)
 Procedure TfmIDEHelpHelperOptions.InitialiseFrame(slSearchURLs,
-  slPermanentURLs: TStringList; iSearchURL: Integer);
+	slPermanentURLs: TStringList; iSearchURL: Integer);
 
 Begin
-  FClickIndex := -1;
-  lbxSearchURLsClick(Nil);
-  lbxPermanentURLsClick(Nil);
-  lbxSearchURLs.Items.Assign(slSearchURLs);
-  lbxPermanentURLs.Items.Assign(slPermanentURLs);
-  If (iSearchURL > -1) And (iSearchURL <= lbxSearchURLs.Items.Count - 1) Then
-    lbxSearchURLs.Checked[iSearchURL] := True;
+	FClickIndex := -1;
+	lbxSearchURLsClick(Nil);
+	lbxPermanentURLsClick(Nil);
+	lbxSearchURLs.Items.Assign(slSearchURLs);
+	lbxPermanentURLs.Items.Assign(slPermanentURLs);
+	If (iSearchURL > -1) And (iSearchURL <= lbxSearchURLs.Items.Count - 1) Then
+		lbxSearchURLs.Checked[iSearchURL] := True;
 End;
 
 (**
 
-  This is an on click event handler for the Permanent URLs list box.
+	This is an on click event handler for the Permanent URLs list box.
 
-  @precon  None.
-  @postcon Updates the availability of the edit and delete buttons.
+	@precon  None.
+	@postcon Updates the availability of the edit and delete buttons.
 
-  @param   Sender as a TObject
+	@param   Sender as a TObject
 
 **)
 Procedure TfmIDEHelpHelperOptions.lbxPermanentURLsClick(Sender: TObject);
 
 Begin
-  btnDefault.Enabled := lbxPermanentURLs.ItemIndex > -1;
-  btnEditPeranent.Enabled := lbxPermanentURLs.ItemIndex > -1;
-  btnDeletePermanent.Enabled := lbxPermanentURLs.ItemIndex > -1;
+	btnDefault.Enabled := lbxPermanentURLs.ItemIndex > -1;
+	btnEditPeranent.Enabled := lbxPermanentURLs.ItemIndex > -1;
+	btnDeletePermanent.Enabled := lbxPermanentURLs.ItemIndex > -1;
 End;
 
 (**
 
-  This is an on click event handler for the Search URLs list box.
+	This is an on click event handler for the Search URLs list box.
 
-  @precon  None.
-  @postcon Updates the availability of the edit and delete buttons.
+	@precon  None.
+	@postcon Updates the availability of the edit and delete buttons.
 
-  @param   Sender as a TObject
+	@param   Sender as a TObject
 
 **)
 Procedure TfmIDEHelpHelperOptions.lbxSearchURLsClick(Sender: TObject);
 
 Begin
-  btnEditSearch.Enabled := lbxSearchURLs.ItemIndex > -1;
-  btnDeleteSearch.Enabled := lbxSearchURLs.ItemIndex > -1;
+	btnEditSearch.Enabled := lbxSearchURLs.ItemIndex > -1;
+	btnDeleteSearch.Enabled := lbxSearchURLs.ItemIndex > -1;
 End;
 
 (**
 
-  This is an on click check event handler for the Search Listbox.
+	This is an on click check event handler for the Search List box.
 
-  @precon  None.
-  @postcon This method unselects all the check marks of the listbox except the one with
+	@precon  None.
+	@postcon This method un-selects all the check marks of the list box except the one with
            index FClickIndex (i.e. ensure that ONLY the selected items check mark is
            checked).
 
@@ -378,22 +378,22 @@ End;
   This method is an on mouse down event handler for the Search URLs list box.
 
   @precon  None.
-  @postcon Updates the FClickIndex when the left mouse button is clicked over a listbox
-           item.
+	@postcon Updates the FClickIndex when the left mouse button is clicked over a list box
+					 item.
 
-  @param   Sender as a TObject
-  @param   Button as a TMouseButton
-  @param   Shift  as a TShiftState
-  @param   X      as an Integer
-  @param   Y      as an Integer
+	@param   Sender as a TObject
+	@param   Button as a TMouseButton
+	@param   Shift  as a TShiftState
+	@param   X      as an Integer
+	@param   Y      as an Integer
 
 **)
 Procedure TfmIDEHelpHelperOptions.lbxSearchURLsMouseDown(Sender: TObject;
-  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+	Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 
 Begin
-  If Button = mbLeft Then
-    FClickIndex := lbxSearchURLs.ItemAtPos(Point(X, Y), True);
+	If Button = mbLeft Then
+		FClickIndex := lbxSearchURLs.ItemAtPos(Point(X, Y), True);
 End;
 
 End.

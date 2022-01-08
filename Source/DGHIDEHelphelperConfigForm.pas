@@ -1,11 +1,11 @@
 (**
 
-  This module contains a class to represent a configuation for for the applications
-  options.
+	This module contains a class to represent a configuration for for the applications
+	options.
 
-  @Version 1.0
+  @Version 1.012
   @Author  David Hoyle
-  @Date    07 Apr 2016
+  @Date    08 Jan 2022
 
 **)
 Unit DGHIDEHelphelperConfigForm;
@@ -65,36 +65,36 @@ Uses
   @postcon The pass variables are updated in the dialogue is confirmed and true is
            returned else they are not modified and false is returned.
 
-  @param   slSearchURLs    as a TStringList
-  @param   slPermanentURLs as a TStringList
-  @param   iSearchURL      as an Integer as a reference
-  @return  a Boolean
+	@param   slSearchURLs    as a TStringList
+	@param   slPermanentURLs as a TStringList
+	@param   iSearchURL      as an Integer as a reference
+	@return  a Boolean
 
 **)
 Class Function TfrmDGHIDEHelphelperConfig.Execute(slSearchURLs,
-  slPermanentURLs : TStringList; var iSearchURL : Integer): Boolean;
+	slPermanentURLs : TStringList; var iSearchURL : Integer): Boolean;
 
 Begin
-  Result := False;
-  With TfrmDGHIDEHelphelperConfig.Create(Nil) Do
-    Try
-      FFrame.InitialiseFrame(slSearchURLs, slPermanentURLs, iSearchURL);
-      If ShowModal = mrOk Then
-        Begin
-          FFrame.FinaliseFrame(slSearchURLs, slPermanentURLs, iSearchURL);
-          Result := True;
-        End;
-    Finally
-      Free;
-    End;
+	Result := False;
+	With TfrmDGHIDEHelphelperConfig.Create(Nil) Do
+		Try
+			FFrame.InitialiseFrame(slSearchURLs, slPermanentURLs, iSearchURL);
+			If ShowModal = mrOk Then
+				Begin
+					FFrame.FinaliseFrame(slSearchURLs, slPermanentURLs, iSearchURL);
+					Result := True;
+				End;
+		Finally
+			Free;
+		End;
 End;
 
 (**
 
-  This is an OnFormCreate Event Handler for the TfrmDGHIDEHelpHelperConfig class.
+	This is an On Form Create Event Handler for the TfrmDGHIDEHelpHelperConfig class.
 
-  @precon  None.
-  @postcon Initialises the FClickIndex variable to -1.
+	@precon  None.
+  @postcon Creates the configuration frame.
 
   @param   Sender as a TObject
 

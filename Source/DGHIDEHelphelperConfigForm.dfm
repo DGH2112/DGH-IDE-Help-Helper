@@ -14,13 +14,12 @@ object frmDGHIDEHelphelperConfig: TfrmDGHIDEHelphelperConfig
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
+  PixelsPerInch = 96
   DesignSize = (
     584
     362)
-  PixelsPerInch = 96
   TextHeight = 13
   object btnOK: TBitBtn
     Left = 420

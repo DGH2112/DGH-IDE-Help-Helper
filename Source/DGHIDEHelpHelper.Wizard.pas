@@ -1,8 +1,8 @@
 (**
 
-  This module contains the main wizard / menu wizard code for the IDE plugin.
+  This module contains the main wizard / menu wizard code for the IDE plug-in.
 
-  @Version 1.060
+  @Version 1.077
   @Author  David Hoyle
   @Date    08 Jan 2022
 
@@ -75,7 +75,7 @@ End;
   A destructor for the TWizardTemplate class.
 
   @precon  None.
-  @postcon Unregisters the IDE Options Interface from the system.
+  @postcon Un-registers the IDE Options Interface from the system.
 
 **)
 Destructor TWizardTemplate.Destroy;
@@ -90,7 +90,7 @@ End;
 
 (**
 
-  This is the Exceute method for the IOTAWizard interface.
+  This is the Execute method for the IOTAWizard interface.
 
   @precon  None.
   @postcon This is invoked when the menu item on the Help menu is selected and it displays
@@ -115,8 +115,11 @@ End;
 **)
 Function TWizardTemplate.GetIDString: String;
 
+Const
+  strDGHHelpHelper = 'DGHHelpHelper';
+
 Begin
-  Result := 'DGH IDE HelpHelper';
+  Result := strDGHHelpHelper;
 End;
 
 (**
@@ -131,8 +134,11 @@ End;
 **)
 Function TWizardTemplate.GetMenuText: String;
 
+ResourceString
+  strIDEHelpHelper = 'IDE Help Helper';
+
 Begin
-  Result := 'IDE Help Helper';
+  Result := strIDEHelpHelper;
 End;
 
 (**
@@ -147,8 +153,11 @@ End;
 **)
 Function TWizardTemplate.GetName: String;
 
+Const
+  strDGHIDEHelpHelper = 'DGH IDE Help Helper';
+
 Begin
-  Result := 'DGH IDE Help Helper';
+  Result := strDGHIDEHelpHelper;
 End;
 
 (**
