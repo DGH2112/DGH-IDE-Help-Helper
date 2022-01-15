@@ -2,7 +2,7 @@
 
   This module contains the main wizard / menu wizard code for the IDE plug-in.
 
-  @Version 1.154
+  @Version 1.174
   @Author  David Hoyle
   @Date    15 Jan 2022
 
@@ -11,11 +11,12 @@ Unit DGHIDEHelpHelper.Wizard;
 
 Interface
 
-Uses
+uses
+  Vcl.Menus,
+  Vcl.ExtCtrls,
   ToolsAPI,
-  Menus,
-  ExtCtrls,
-  DGHIDEHelpHelper.IDEOptionsInterface;
+  DGHIDEHelpHelper.IDEOptionsInterface,
+  DGHIDEHelpHelper.HelpEditorView;
 
 {$INCLUDE CompilerDefinitions.inc}
 
@@ -67,7 +68,8 @@ Begin
     TKeybindingTemplate.Create);
   FOpFrame := TIDEHelpHelperIDEOptionsInterface.Create;
   (BorlandIDEServices As INTAEnvironmentOptionsServices).RegisterAddInOptions(FOpFrame);
-  TfrmDockableBrowser.CreateDockableBrowser;
+  //: @debug TfrmDockableBrowser.CreateDockableBrowser;
+  RegisterIDEHelpEditorView;
 End;
 
 (**
@@ -81,7 +83,8 @@ End;
 Destructor TWizardTemplate.Destroy;
 
 Begin
-  TfrmDockableBrowser.RemoveDockableBrowser;
+  UnregisterIDEHelpEditorView;
+  //: @debug TfrmDockableBrowser.RemoveDockableBrowser;
   (BorlandIDEServices As INTAEnvironmentOptionsServices).UnregisterAddInOptions(FOpFrame);
   FOpFrame := Nil;
   If FKeyBindingIndex > -1 Then
@@ -102,7 +105,8 @@ End;
 Procedure TWizardTemplate.Execute;
 
 Begin
-  TfrmDockableBrowser.ShowDockableBrowser;
+  //: @debug TfrmDockableBrowser.ShowDockableBrowser;
+  TIHHHelpEditorView.CreateEditorView;
 End;
 
 (**

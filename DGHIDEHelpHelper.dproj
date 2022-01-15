@@ -61,6 +61,7 @@
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
         <DCC_MapFile>3</DCC_MapFile>
+        <DCC_UnitSearchPath>$(BDSPROJECTSDIR)\Binaries\CS5\Lib\RX11\Win32;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>EurekaLogCore;FireDACASADriver;FireDACSqliteDriver;bindcompfmx;DBXSqliteDriver;FireDACPgDriver;FireDACODBCDriver;RESTBackendComponents;emsclientfiredac;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;FireDACCommon;bindcomp;inetdb;tethering;TeeDB;vclib;SynEditDR;DBXInterBaseDriver;Tee;vclFireDAC;xmlrtl;svnui;ibxpress;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;FireDACCommonDriver;MetropolisUILiveTile;bindcompdbx;bindengine;vclactnband;vcldb;soaprtl;vcldsnap;bindcompvcl;FMXTee;TeeUI;CodeSiteLoggingPkg;vclie;fmxFireDAC;FireDACADSDriver;vcltouch;CodeSiteDBToolsPkg;emsclient;CustomIPTransport;vclribbon;VCLRESTComponents;FireDAC;VclSmp;dsnap;Intraweb;fmxase;vcl;IndyCore;IndyIPServer;IndyIPCommon;CloudService;dsnapcon;FireDACIBDriver;FmxTeeUI;inet;IDEAutoSave;fmxobj;FireDACMySQLDriver;soapmidas;vclx;soapserver;inetdbxpress;svn;dsnapxml;fmxdae;RESTComponents;VirtualTreesR;FireDACMSAccDriver;dbexpress;adortl;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
@@ -136,6 +137,7 @@
         <DCCReference Include="Source\DGHIDEHelpHelper.ResourceStrings.pas"/>
         <DCCReference Include="Source\DGHIDEHelpHelper.Constants.pas"/>
         <DCCReference Include="Source\DGHIDEHelpHelper.AboutBox.pas"/>
+        <DCCReference Include="Source\DGHIDEHelpHelper.HelpEditorView.pas"/>
         <None Include="Source\CompilerDefinitions.inc"/>
         <None Include="License.md"/>
         <None Include="README.md"/>

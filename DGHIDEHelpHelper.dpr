@@ -4,8 +4,8 @@
   information the IDE cannot find.
 
   @Author  David Hoyle
-  @Version 1.015
-  @Date    06 Jan 2022
+  @Version 1.025
+  @Date    15 Jan 2022
 
 **)
 Library DGHIDEHelpHelper;
@@ -40,7 +40,8 @@ uses
   DGHIDEHelpHelper.SplashScreen in 'Source\DGHIDEHelpHelper.SplashScreen.pas',
   DGHIDEHelpHelper.ResourceStrings in 'Source\DGHIDEHelpHelper.ResourceStrings.pas',
   DGHIDEHelpHelper.Constants in 'Source\DGHIDEHelpHelper.Constants.pas',
-  DGHIDEHelpHelper.AboutBox in 'Source\DGHIDEHelpHelper.AboutBox.pas';
+  DGHIDEHelpHelper.AboutBox in 'Source\DGHIDEHelpHelper.AboutBox.pas',
+  DGHIDEHelpHelper.HelpEditorView in 'Source\DGHIDEHelpHelper.HelpEditorView.pas';
 
 {$INCLUDE Source\CompilerDefinitions.inc}
 {$INCLUDE Source\LibrarySuffixes.inc}
