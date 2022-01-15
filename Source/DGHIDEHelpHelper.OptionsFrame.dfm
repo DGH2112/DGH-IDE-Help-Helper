@@ -4,6 +4,7 @@ object fmIDEHelpHelperOptions: TfmIDEHelpHelperOptions
   Width = 608
   Height = 303
   TabOrder = 0
+  PixelsPerInch = 96
   object gpGridPanel: TGridPanel
     Left = 0
     Top = 0
@@ -46,7 +47,7 @@ object fmIDEHelpHelperOptions: TfmIDEHelpHelperOptions
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 602
+        Width = 70
         Height = 13
         Align = alTop
         Anchors = []
@@ -57,7 +58,6 @@ object fmIDEHelpHelperOptions: TfmIDEHelpHelperOptions
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitWidth = 70
       end
       object pnlSearchButtons: TPanel
         Left = 0
@@ -173,7 +173,7 @@ object fmIDEHelpHelperOptions: TfmIDEHelpHelperOptions
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 602
+        Width = 94
         Height = 13
         Align = alTop
         Anchors = []
@@ -184,7 +184,6 @@ object fmIDEHelpHelperOptions: TfmIDEHelpHelperOptions
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitWidth = 94
       end
       object lbxPermanentURLs: TListBox
         AlignWithMargins = True

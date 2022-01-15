@@ -4,6 +4,7 @@ object fmWebBrowser: TfmWebBrowser
   Width = 513
   Height = 412
   TabOrder = 0
+  PixelsPerInch = 96
   object wbBrowser: TWebBrowser
     AlignWithMargins = True
     Left = 3

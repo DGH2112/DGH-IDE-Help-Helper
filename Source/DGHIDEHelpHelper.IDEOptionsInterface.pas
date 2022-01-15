@@ -3,19 +3,19 @@
   This module contains a class which implements the INTAAddInOptions interface to provide
   an options page within the IDEs options dialogue.
 
-  @Version 1.032
+  @Version 1.540
   @Author  David Hoyle
-  @Date    08 Jan 2022
+  @Date    15 Jan 2022
 
 **)
-Unit IDEOptionsInterface;
+Unit DGHIDEHelpHelper.IDEOptionsInterface;
 
 Interface
 
 Uses
   ToolsAPI,
   Forms,
-  DGHIDEHelpHelperOptionsFrame;
+  DGHIDEHelpHelper.OptionsFrame;
 
 {$INCLUDE CompilerDefinitions.inc}
 
@@ -41,7 +41,7 @@ Type
 Implementation
 
 Uses
-  ApplicationsOptions;
+  DGHIDEHelpHelper.ApplicationsOptions;
 
 {TIDEHelpHelperIDEOptionsInterface}
 

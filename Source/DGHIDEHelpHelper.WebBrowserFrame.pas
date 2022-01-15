@@ -4,12 +4,12 @@
   than one application without having to conditionally compile a form for inclusion in the
   IDE or an external application.
 
-  @Version 1.287
+  @Version 1.291
   @Author  David Hoyle
   @Date    15 Jan 2022
 
 **)
-Unit WebBrowserFrame;
+Unit DGHIDEHelpHelper.WebBrowserFrame;
 
 Interface
 
@@ -93,8 +93,8 @@ Implementation
 
 Uses
   DGHIDEHelpHelper.Functions,
-  DGHIDEHelphelperConfigForm,
-  ApplicationsOptions,
+  DGHIDEHelphelper.ConfigForm,
+  DGHIDEHelpHelper.ApplicationsOptions,
   ShellAPI,
   ToolsAPI;
 

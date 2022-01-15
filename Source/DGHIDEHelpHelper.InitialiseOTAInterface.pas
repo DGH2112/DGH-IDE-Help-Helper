@@ -3,12 +3,12 @@
   This module contains methods for initialising all the various wizard interfaces required
   by the application.
 
-  @Version 1.314
+  @Version 1.319
   @Author  David Hoyle
-  @Date    08 Jan 2022
+  @Date    15 Jan 2022
 
 **)
-Unit InitialiseOTAInterface;
+Unit DGHIDEHelpHelper.InitialiseOTAInterface;
 
 Interface
 
@@ -31,8 +31,8 @@ Uses
   Forms,
   Windows,
   DGHIDEHelpHelper.Wizard,
-  KeyboardBindingInterface,
-  DockableBrowserForm,
+  DGHIDEHelpHelper.KeyboardBindingInterface,
+  DGHIDEHelpHelper.DockableBrowserForm,
   DGHIDEHelpHelper.Functions,
   DGHIDEHelpHelper.ResourceStrings,
   DGHIDEHelpHelper.Constants;

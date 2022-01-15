@@ -3,12 +3,12 @@
   This module contains a frame which represents the controls for configuring the IDE Help
   Helper settings.
 
-  @Version 1.144
+  @Version 1.145
   @Author  David Hoyle
-  @Date    08 Jan 2022
+  @Date    15 Jan 2022
 
 **)
-Unit DGHIDEHelpHelperOptionsFrame;
+Unit DGHIDEHelpHelper.OptionsFrame;
 
 Interface
 

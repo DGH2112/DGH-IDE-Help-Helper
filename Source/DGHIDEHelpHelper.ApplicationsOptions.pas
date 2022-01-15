@@ -3,12 +3,12 @@
   This module contains a class to handle all the applications settings (including loading
   and saving them to an INI file) and make them available to the whole application.
 
-  @Version 1.208
+  @Version 1.210
   @Author  David Hoyle
-  @Date    08 Jan 2022
+  @Date    15 Jan 2022
 
 **)
-Unit ApplicationsOptions;
+Unit DGHIDEHelpHelper.ApplicationsOptions;
 
 Interface
 

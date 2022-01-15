@@ -108,26 +108,26 @@
         <RcCompile Include="ITHrVerInfo.RC">
             <Form>ITHrVerInfo.res</Form>
         </RcCompile>
-        <DCCReference Include="Source\InitialiseOTAInterface.pas"/>
+        <DCCReference Include="Source\DGHIDEHelpHelper.InitialiseOTAInterface.pas"/>
         <DCCReference Include="Source\DGHIDEHelpHelper.Functions.pas"/>
         <DCCReference Include="Source\DGHIDEHelpHelper.Wizard.pas"/>
-        <DCCReference Include="Source\KeyboardBindingInterface.pas"/>
-        <DCCReference Include="Source\DockableBrowserForm.pas">
+        <DCCReference Include="Source\DGHIDEHelpHelper.KeyboardBindingInterface.pas"/>
+        <DCCReference Include="Source\DGHIDEHelpHelper.DockableBrowserForm.pas">
             <Form>frmDockableBrowser</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Source\DGHIDEHelphelperConfigForm.pas">
+        <DCCReference Include="Source\DGHIDEHelphelper.ConfigForm.pas">
             <Form>frmDGHIDEHelphelperConfig</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Source\ApplicationsOptions.pas"/>
-        <DCCReference Include="Source\DGHIDEHelpHelperOptionsFrame.pas">
+        <DCCReference Include="Source\DGHIDEHelpHelper.ApplicationsOptions.pas"/>
+        <DCCReference Include="Source\DGHIDEHelpHelper.OptionsFrame.pas">
             <Form>fmIDEHelpHelperOptions</Form>
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
-        <DCCReference Include="Source\IDEOptionsInterface.pas"/>
-        <DCCReference Include="Source\WebBrowserFrame.pas">
+        <DCCReference Include="Source\DGHIDEHelpHelper.IDEOptionsInterface.pas"/>
+        <DCCReference Include="Source\DGHIDEHelpHelper.WebBrowserFrame.pas">
             <Form>fmWebBrowser</Form>
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>

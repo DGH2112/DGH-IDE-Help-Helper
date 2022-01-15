@@ -3,12 +3,12 @@
   This module contains a class to represent a configuration for for the applications
   options.
 
-  @Version 1.138
+  @Version 1.140
   @Author  David Hoyle
-  @Date    08 Jan 2022
+  @Date    15 Jan 2022
 
 **)
-Unit DGHIDEHelphelperConfigForm;
+Unit DGHIDEHelphelper.ConfigForm;
 
 Interface
 
@@ -26,7 +26,7 @@ Uses
   Buttons,
   CheckLst,
   ExtCtrls,
-  DGHIDEHelphelperOptionsFrame;
+  DGHIDEHelphelper.OptionsFrame;
 
 Type
   (** This class represents a form for editing the applications options. **)

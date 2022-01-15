@@ -3,12 +3,12 @@
   This module contains a class to provide a key binding wizard to capture the F1 key press
   in the IDE and if unhandled do an internet search.
 
-  @Version 1.059
+  @Version 1.746
   @Author  David Hoyle
-  @Date    08 Jan 2022
+  @Date    15 Jan 2022
 
 **)
-Unit KeyboardBindingInterface;
+Unit DGHIDEHelpHelper.KeyboardBindingInterface;
 
 Interface
 
@@ -43,8 +43,8 @@ Uses
   DGHIDEHelpHelper.Functions,
   ShellAPI,
   Windows,
-  DockableBrowserForm,
-  ApplicationsOptions;
+  DGHIDEHelpHelper.DockableBrowserForm,
+  DGHIDEHelpHelper.ApplicationsOptions;
 
 { TKeybindingTemplate }
 

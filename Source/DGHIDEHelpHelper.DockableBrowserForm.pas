@@ -3,12 +3,12 @@
   This module contains a IDE derived dockable form to contain the results of the
   searches where the IDE cannot provide help.
 
-  @Version 1.269
+  @Version 1.274
   @Author  David Hoyle
-  @Date    08 Jan 2022
+  @Date    15 Jan 2022
 
 **)
-Unit DockableBrowserForm;
+Unit DGHIDEHelpHelper.DockableBrowserForm;
 
 Interface
 
@@ -31,7 +31,7 @@ Uses
   ComCtrls,
   ActnList,
   ImgList,
-  WebBrowserFrame;
+  DGHIDEHelpHelper.WebBrowserFrame;
 
 Type
   (** This class is a IDE dockable form for the results of the internet searches. **)
@@ -62,7 +62,7 @@ Implementation
 
 Uses
   DeskUtil,
-  ApplicationsOptions;
+  DGHIDEHelpHelper.ApplicationsOptions;
 
 Var
   (** This is a private variable to hold the singleton instance of the

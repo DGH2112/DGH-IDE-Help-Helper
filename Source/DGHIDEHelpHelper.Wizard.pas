@@ -2,9 +2,9 @@
 
   This module contains the main wizard / menu wizard code for the IDE plug-in.
 
-  @Version 1.077
+  @Version 1.080
   @Author  David Hoyle
-  @Date    08 Jan 2022
+  @Date    15 Jan 2022
 
 **)
 Unit DGHIDEHelpHelper.Wizard;
@@ -15,7 +15,7 @@ Uses
   ToolsAPI,
   Menus,
   ExtCtrls,
-  IDEOptionsInterface;
+  DGHIDEHelpHelper.IDEOptionsInterface;
 
 {$INCLUDE CompilerDefinitions.inc}
 
@@ -47,7 +47,7 @@ Implementation
 { TWizardTemplate }
 
 Uses
-  DockableBrowserForm,
+  DGHIDEHelpHelper.DockableBrowserForm,
   DGHIDEHelpHelper.SplashScreen,
   DGHIDEHelpHelper.AboutBox;
 
