@@ -3,7 +3,7 @@
   This module contains methods for initialising all the various wizard interfaces required
   by the application.
 
-  @Version 1.356
+  @Version 1.457
   @Author  David Hoyle
   @Date    15 Jan 2022
 
@@ -31,23 +31,10 @@ Uses
   Forms,
   Windows,
   DGHIDEHelpHelper.Wizard,
-  DGHIDEHelpHelper.KeyboardBindingInterface,
   DGHIDEHelpHelper.DockableBrowserForm,
   DGHIDEHelpHelper.Functions,
   DGHIDEHelpHelper.ResourceStrings,
   DGHIDEHelpHelper.Constants;
-
-Const
-  (** This is a constant which is initially assigned to all wizard indexes to signify
-      a failed initialisation state. **)
-  iWizardFailState = -1;
-
-Var
-  (** A variable to hold the wizard index for the main wizard. **)
-  iWizardIndex           : Integer = iWizardFailState;
-  (** A variable to hold the wizard index for the key binding wizard. **)
-  iKeyBindingIndex       : Integer = iWizardFailState;
-
 
 (**
 
@@ -58,7 +45,6 @@ Var
 
   @nocheck MissingCONSTInParam
 
-  @param   WizardType as a TWizardType
   @return  a TWizardTemplate
 
 **)
@@ -72,10 +58,6 @@ Begin
   ToolsAPI.BorlandIDEServices := BorlandIDEServices;
   Application.Handle := Svcs.GetParentHandle;
   Result := TWizardTemplate.Create;
-  // Create Keyboard Binding Interface
-  iKeyBindingIndex := (BorlandIDEServices As IOTAKeyboardServices).AddKeyboardBinding(
-    TKeybindingTemplate.Create);
-
 End;
 
 (**
@@ -113,12 +95,6 @@ Initialization
 (** The finalisation section removes the about box, splash screen entries and wizard
     interfaces and frees the dockable browser. **)
 Finalization
-  // Remove Wizard Interface
-  If iWizardIndex > iWizardFailState Then
-    (BorlandIDEServices As IOTAWizardServices).RemoveWizard(iWizardIndex);
-  // Remove Keyboard Binding Interface
-  If iKeyBindingIndex > iWizardFailState Then
-    (BorlandIDEServices As IOTAKeyboardServices).RemoveKeyboardBinding(iKeyBindingIndex);
   TfrmDockableBrowser.RemoveDockableBrowser;
 End.
 
