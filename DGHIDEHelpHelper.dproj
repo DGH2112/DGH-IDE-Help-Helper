@@ -140,6 +140,7 @@
         <None Include="License.md"/>
         <None Include="README.md"/>
         <None Include="Source\LibrarySuffixes.inc"/>
+        <None Include="Contributing.md"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
