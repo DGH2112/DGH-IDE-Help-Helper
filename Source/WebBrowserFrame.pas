@@ -4,9 +4,9 @@
   than one application without having to conditionally compile a form for inclusion in the
   IDE or an external application.
 
-  @Version 1.176
+  @Version 1.287
   @Author  David Hoyle
-  @Date    08 Jan 2022
+  @Date    15 Jan 2022
 
 **)
 Unit WebBrowserFrame;
@@ -98,7 +98,15 @@ Uses
   ShellAPI,
   ToolsAPI;
 
-{TfmWebBrowser}
+Const
+  (** A constant to define the status bar panel for the loading state. **)
+  iLoadingPanelIndex = 0;
+  (** A constant to define the status bar panel for the loading progress. **)
+  iProgressPanelIndex = 1;
+  (** A constant to define the status bar panel for the status. **)
+  iStatusPanelIndex = 2;
+  (** A constant to define the status bar panel for the engine. **)
+  iEnginePanelIndex = 3;
 
 (**
 
@@ -275,6 +283,7 @@ Constructor TfmWebBrowser.Create(AOwner: TComponent);
 Begin
   Inherited Create(AOwner);
   cbxURL.Items.Assign(AppOptions.PermanentURLs);
+  wbBrowser.SelectedEngine := EdgeIfAvailable;
 End;
 
 (**
@@ -306,7 +315,19 @@ End;
 **)
 Procedure TfmWebBrowser.Navigate(Const strURL: String);
 
+ResourceString
+  strNone = 'None';
+  strNoneYet = 'None Yet';
+  strIE = 'IE';
+  strEdge = 'Edge';
+
 Begin
+  Case wbBrowser.ActiveEngine Of
+    None:    sbrStatus.Panels[iEnginePanelIndex].Text := strNone;
+    NoneYet: sbrStatus.Panels[iEnginePanelIndex].Text := strNoneYet;
+    IE:      sbrStatus.Panels[iEnginePanelIndex].Text := strIE;
+    Edge:    sbrStatus.Panels[iEnginePanelIndex].Text := strEdge;
+  End;
   wbBrowser.Navigate(strURL);
 End;
 
@@ -458,7 +479,7 @@ ResourceString
   strLoading = 'Loading...';
 
 Begin
-  sbrStatus.Panels[0].Text := strLoading;
+  sbrStatus.Panels[iLoadingPanelIndex].Text := strLoading;
 End;
 
 (**
@@ -477,7 +498,7 @@ ResourceString
   strLoaded = 'Loaded.';
 
 Begin
-  sbrStatus.Panels[0].Text := strLoaded;
+  sbrStatus.Panels[iLoadingPanelIndex].Text := strLoaded;
 End;
 
 (**
@@ -506,7 +527,7 @@ Begin
     FPercent := Int(Progress) / Int(ProgressMax) * dbl100Percent
   Else
     FPercent := dbl100Percent;
-  sbrStatus.Panels[1].Text := Format('%1.1n%%', [FPercent]);
+  sbrStatus.Panels[iProgressPanelIndex].Text := Format('%1.1n%%', [FPercent]);
   Application.ProcessMessages;
 End;
 
@@ -527,11 +548,8 @@ End;
 Procedure TfmWebBrowser.wbBrowserStatusTextChange(ASender: TObject;
   Const Text: WideString);
 
-Const
-  iPanelIndex = 2;
-
 Begin
-  sbrStatus.Panels[iPanelIndex].Text := Text;
+  sbrStatus.Panels[iStatusPanelIndex].Text := Text;
 End;
 
 (**

@@ -43,6 +43,9 @@ object fmWebBrowser: TfmWebBrowser
         Width = 75
       end
       item
+        Width = 100
+      end
+      item
         Width = 50
       end>
     OnDrawPanel = sbrStatusDrawPanel
