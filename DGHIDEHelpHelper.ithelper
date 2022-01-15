@@ -10,7 +10,7 @@ CompileWithBRCC32=0
 MajorVer=1
 MinorVer=0
 ReleaseVer=3
-BuildVer=247
+BuildVer=249
 ResourceName=ITHrVerInfo
 IncBuild.Make.Base=2
 IncBuild.Build.Base=2
@@ -35,7 +35,7 @@ ExclusionFiles=
 [VersionInfo]
 CompanyName=David Hoyle
 FileDescription=DGHIDEHelpHelper
-FileVersion=1.0.3.247
+FileVersion=1.0.3.249
 InternalName=DGHIDEHelpHelper
 LegalCopyright=David Hoyle
 LegalTrademarks=David Hoyle

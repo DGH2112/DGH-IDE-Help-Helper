@@ -3,7 +3,7 @@
   This module contains methods for initialising all the various wizard interfaces required
   by the application.
 
-  @Version 1.319
+  @Version 1.356
   @Author  David Hoyle
   @Date    15 Jan 2022
 
@@ -37,10 +37,6 @@ Uses
   DGHIDEHelpHelper.ResourceStrings,
   DGHIDEHelpHelper.Constants;
 
-Type
-  (** An enumerate to define the type of wizard to be created. **)
-  TWizardType = (wtPackageWizard, wtDLLWizard);
-
 Const
   (** This is a constant which is initially assigned to all wizard indexes to signify
       a failed initialisation state. **)
@@ -66,7 +62,7 @@ Var
   @return  a TWizardTemplate
 
 **)
-Function InitialiseWizard(WizardType : TWizardType) : TWizardTemplate;
+Function InitialiseWizard : TWizardTemplate;
 
 Var
   Svcs : IOTAServices;
@@ -75,10 +71,7 @@ Begin
   Svcs := BorlandIDEServices As IOTAServices;
   ToolsAPI.BorlandIDEServices := BorlandIDEServices;
   Application.Handle := Svcs.GetParentHandle;
-  // Create Wizard / Menu Wizard
   Result := TWizardTemplate.Create;
-  If WizardType = wtPackageWizard Then // Only register main wizard this way if PACKAGE
-    iWizardIndex := (BorlandIDEServices As IOTAWizardServices).AddWizard(Result);
   // Create Keyboard Binding Interface
   iKeyBindingIndex := (BorlandIDEServices As IOTAKeyboardServices).AddKeyboardBinding(
     TKeybindingTemplate.Create);
@@ -110,7 +103,7 @@ Function InitWizard(Const BorlandIDEServices : IBorlandIDEServices;
 Begin
   Result := BorlandIDEServices <> Nil;
   If Result Then
-    RegisterProc(InitialiseWizard(wtDLLWizard));
+    RegisterProc(InitialiseWizard);
 End;
 
 (** The initialisation section creates the dockable browser form and adds an item to the
