@@ -2,7 +2,7 @@
 
   This module contains the main wizard / menu wizard code for the IDE plug-in.
 
-  @Version 1.137
+  @Version 1.154
   @Author  David Hoyle
   @Date    15 Jan 2022
 
@@ -30,10 +30,8 @@ Type
     FKeyBindingIndex : Integer;
   Strict Protected
   Public
-    {$IFDEF DXE00}
     Constructor Create;
     Destructor Destroy; Override;
-    {$ENDIF}
     // IOTAWizard
     Function GetIDString: String;
     Function GetName: String;
@@ -45,15 +43,12 @@ Type
 
 Implementation
 
-{ TWizardTemplate }
-
 Uses
   DGHIDEHelpHelper.DockableBrowserForm,
   DGHIDEHelpHelper.SplashScreen,
   DGHIDEHelpHelper.AboutBox,
   DGHIDEHelpHelper.KeyboardBindingInterface;
 
-{$IFDEF DXE00}
 (**
 
   A constructor for the TWizardTemplate class.
@@ -72,6 +67,7 @@ Begin
     TKeybindingTemplate.Create);
   FOpFrame := TIDEHelpHelperIDEOptionsInterface.Create;
   (BorlandIDEServices As INTAEnvironmentOptionsServices).RegisterAddInOptions(FOpFrame);
+  TfrmDockableBrowser.CreateDockableBrowser;
 End;
 
 (**
@@ -85,6 +81,7 @@ End;
 Destructor TWizardTemplate.Destroy;
 
 Begin
+  TfrmDockableBrowser.RemoveDockableBrowser;
   (BorlandIDEServices As INTAEnvironmentOptionsServices).UnregisterAddInOptions(FOpFrame);
   FOpFrame := Nil;
   If FKeyBindingIndex > -1 Then
@@ -92,7 +89,6 @@ Begin
   TIHHAboutBox.RemoveAboutBox(FAboutPluginIndex);
   Inherited Destroy;
 End;
-{$ENDIF}
 
 (**
 

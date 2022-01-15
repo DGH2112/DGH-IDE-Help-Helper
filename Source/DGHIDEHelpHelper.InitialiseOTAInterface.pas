@@ -3,7 +3,7 @@
   This module contains methods for initialising all the various wizard interfaces required
   by the application.
 
-  @Version 1.457
+  @Version 1.511
   @Author  David Hoyle
   @Date    15 Jan 2022
 
@@ -30,11 +30,7 @@ Uses
   SysUtils,
   Forms,
   Windows,
-  DGHIDEHelpHelper.Wizard,
-  DGHIDEHelpHelper.DockableBrowserForm,
-  DGHIDEHelpHelper.Functions,
-  DGHIDEHelpHelper.ResourceStrings,
-  DGHIDEHelpHelper.Constants;
+  DGHIDEHelpHelper.Wizard;
 
 (**
 
@@ -88,13 +84,5 @@ Begin
     RegisterProc(InitialiseWizard);
 End;
 
-(** The initialisation section creates the dockable browser form and adds an item to the
-    splash screen for the application. **)
-Initialization
-  TfrmDockableBrowser.CreateDockableBrowser;
-(** The finalisation section removes the about box, splash screen entries and wizard
-    interfaces and frees the dockable browser. **)
-Finalization
-  TfrmDockableBrowser.RemoveDockableBrowser;
 End.
 
